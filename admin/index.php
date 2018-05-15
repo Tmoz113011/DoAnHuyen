@@ -1,6 +1,3 @@
-<?php
-ob_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -26,70 +23,141 @@ ob_start();
             <?php
             session_start();
             if(!isset($_SESSION['login_us']))
-            header("location:login.php");
+            {header("location:login.php");}
             ?>
             <div class="container-fluid">
-            <div class="row">
-                <div>
-                    <?php
-                    include __DIR__ ."/connect.php";
-                    include __DIR__ .'/sidebar.php';
-                    ?>
+                <div class="row">
+                    <div>
+                        <?php
+                        include __DIR__ ."/connect.php";
+                        include __DIR__ .'/sidebar.php';
+                        ?>
+                    </div>
+                    <div class="col-md-9">
+                        <?php
+                        //admin
+                        if($_SESSION['login_us']=='ok'&&!empty($_SESSION['quyen'])&&$_SESSION['quyen']==1)
+                        {
+                        if(isset($_REQUEST['page']))
+                        {
+                        $page=$_REQUEST['page'];
+                        switch ($page)
+                        {
+                                case "qlkhoa":
+                                include "qlkhoa.php";
+                                break;
+                                case "qlnganh":
+                                include "qlnganh.php";
+                                break;
+                                case "qllop":
+                                include "qllop.php";
+                                break;
+                                case "qlkhoahoc":
+                                include "qlkhoahoc.php";
+                                break;
+                                case "baocao":
+                                include "baocao.php";
+                                break;
+                                case "xoakhoa":
+                                include "xoakhoa.php";
+                                break;
+                                case "xoanganh":
+                                include "xoanganh.php";
+                                break;
+                                case "xoalop":
+                                include "xoalop.php";
+                                break;
+                                case "xoakhoahoc":
+                                include "xoakhoahoc.php";
+                                break;
+                                case "admin":
+                                include "admin.php";
+                                break;
+                                case "addadmin":
+                                include "addadmin.php";
+                                break;
+                                case "themnd":
+                                include "themnd.php";
+                                break;
+                                case "xoatv":
+                                include "xoatv.php";
+                                break;
+                                case "deladmin":
+                                include "deladmin.php";
+                                break;
+                                case "editadmin":
+                                include "editadmin.php";
+                                break;
+                                case "suatv":
+                                include "suatv.php";
+                                break;
+                                case 'logout';
+                                include "logout.php";
+                                break;
+                                case 'order';
+                                include "order.php";
+                                break;
+                                case 'nguoidung';
+                                include "nguoidung.php";
+                                break;
+                                default:
+                                include "home.php";
+                                break;
+                        
+                        }
+                        
+                        }
+                        else include "home.php";
+                        }
+                        //giao viên
+                        elseif ($_SESSION['login_us']=='ok'&&!empty($_SESSION['quyen'])&&$_SESSION['quyen']==2) {
+                        if(isset($_REQUEST['page']))
+                        {
+                        $page=$_REQUEST['page'];
+                        switch ($page)
+                        {
+                                
+                                case 'logout';
+                                include "logout.php";
+                                break;
+                                default:
+                                include "home.php";
+                                break;
+                        
+                        }
+                        
+                        }
+                        else include "home.php";
+                        }
+                        //thanhtra
+                        elseif ($_SESSION['login_us']=='ok'&&!empty($_SESSION['quyen'])&&$_SESSION['quyen']==2) {
+                        if(isset($_REQUEST['page']))
+                        {
+                        $page=$_REQUEST['page'];
+                        switch ($page)
+                        {
+                                
+                                case 'logout';
+                                include "logout.php";
+                                break;
+                                default:
+                                include "home.php";
+                                break;
+                        
+                        }
+                        
+                        }
+                        else include "home.php";
+                        }
+                        ?>
+                        
+                        
+                    </div>
                 </div>
-                <div class="col-md-9">
-                    <?php
-                    if(isset($_REQUEST['page']))
-                    {
-                    $page=$_REQUEST['page'];
-                    switch ($page)
-                    {
-                    case "qlkhoa":
-                    include "qlkhoa.php";
-                    break;
-                    case "admin":
-                    include "admin.php";
-                    break;
-                    case "addadmin":
-                    include "addadmin.php";
-                    break;
-                    case "themnd":
-                    include "themnd.php";
-                    break;
-                    case "xoatv":
-                    include "xoatv.php";
-                    break;
-                    case "deladmin":
-                    include "deladmin.php";
-                    break;
-                    case "editadmin":
-                    include "editadmin.php";
-                    break;
-                    case "suatv":
-                    include "suatv.php";
-                    break;
-                    case 'logout';
-                    include "logout.php";
-                    break;
-                    case 'order';
-                    include "order.php";
-                    break;
-                    case 'nguoidung';
-                    include "nguoidung.php";
-                    break;
-                    
-                    }
-                    
-                    }
-                    else include "home.php";
-                    ?>
-                    
-                    
-                </div>
+                <!--/.container-->
             </div>
-            <!--/.container-->
-        </div>
-        <!--/.wrapper-->
-        
-        <script src="../admin/css/ckeditor/ckeditor.js" type="text/javascript"></script>
-    </body>
-</html>
+            <!--/.wrapper-->
+            
+            <script src="../admin/css/ckeditor/ckeditor.js" type="text/javascript"></script>
+        </body>
+    </html>

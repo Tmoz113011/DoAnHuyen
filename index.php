@@ -1,3 +1,3 @@
 <script>
-  window.location.href = 'http://localhost/quanlygv/admin';
+  window.location.href = 'http://localhost/doanhuyen/admin';
 </script>
