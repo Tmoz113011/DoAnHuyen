@@ -89,7 +89,17 @@ break;
 			</select>
 		</div>
 	</div>
-	
+	<div class="row">
+		<div class="col-md-5">
+			<label>Giáo viên chủ nhiệm:</label>
+			<select name="id_giaovien" id="id_giaovien" class="form-control">
+				<option value="">Chọn giáo viên</option>
+				<?php foreach ($rows1 as $value) { ?>
+					<option value="<?php echo $value['id'] ?>"><?php echo $value['tennganh'] ?></option>
+				<?php } ?>
+			</select>
+		</div>
+	</div>
 	<br>
 	<div class="row">
 		<div class="col-md-5">
