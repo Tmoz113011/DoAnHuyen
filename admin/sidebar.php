@@ -20,12 +20,14 @@
 	{
 	
 	}
+}
 	//thanhtra
 	elseif ($_SESSION['login_us']=='ok'&&!empty($_SESSION['quyen'])&&$_SESSION['quyen']==2) {
 	if(isset($_REQUEST['page']))
 	{
 	
 	}
+}
 	?>
 	
 </div>

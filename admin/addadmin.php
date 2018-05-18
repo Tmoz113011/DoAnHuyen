@@ -98,13 +98,9 @@ echo "<script>alert('Tài khoản đã tồn tại')</script>";
             </div>
             <div class="control-group">
                 <label class="control-label tieude">Quyền:</label>
-                <div class="controls">
-                    <select name="quyen" class="form-control" required="">
-                        <option value="1">Admin</option>
-                        <option value="2">Giáo viên</option>
-                        <option value="3">Thanh tra</option>
-                    </select>
-                </div>
+                <input type="checkbox" name="quyen[]" class="form-control" value="">Admin
+                <input type="checkbox" name="quyen[]" class="form-control" value="">Giao viên
+                <input type="checkbox" name="quyen[]" class="form-control" value="">Thanh tra
             </div>
             <button type="submit" class="btn btn-success">Lưu</button>
         </form>
