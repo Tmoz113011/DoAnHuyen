@@ -1,6 +1,8 @@
  
 <?php
-            $que = "select * from admin where id=".(int)$_REQUEST['ma'];
+if($_SESSION['login_us']=='ok'&&!empty($_SESSION['quyen'])&&in_array('1', $_SESSION['quyen']))
+{
+$que = "select * from users where id=".(int)$_REQUEST['ma'];
                             $rows=$db->query($que);
                             foreach ($rows as $key => $value) {
                                 $hoten=$value[4];
@@ -59,7 +61,7 @@
                     $sdt=$_POST['sdt']; 
                 }
 
-                    $query = "update admin set hoten='$hoten', diachi='$diachi', email='$email', sdt='$sdt' where id=".(int)$_POST['ma'];
+                    $query = "update users set hoten='$hoten', diachi='$diachi', email='$email', sdt='$sdt' where id=".(int)$_POST['ma'];
 
                     //Thuc thi cau truy van
                     $count=$db->exec($query);
@@ -68,7 +70,7 @@
                        echo "<script>"
                         . "if(confirm('Cập nhật thành viên thành công')==true)"
                             . "{"
-                               . "window.location='index.php?page=admin'"
+                               . "window.location='index.php?page=nguoidung'"
                                . "}</script>"     ;                      
                     }
                     else
@@ -76,6 +78,10 @@
                         . "if(confirm('Thất bại')==true)"
                             . "</script>"     ; 
             }
+}
+else
+{header("location:index.php");}
+            
         ?>
     <form action="" method="post">
                         <fieldset>

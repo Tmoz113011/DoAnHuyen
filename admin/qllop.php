@@ -1,5 +1,5 @@
 <?php
-if($_SESSION['login_us']=='ok'&&!empty($_SESSION['quyen'])&&$_SESSION['quyen']==1)
+if($_SESSION['login_us']=='ok'&&!empty($_SESSION['quyen'])&&in_array('1', $_SESSION['quyen']))
 {
 	$sql = "SELECT lop.id,lop.tenlop,lop.malop,nganh.tennganh,nganh.id,khoahoc.id,khoahoc.tenkhoahoc,khoahoc.makhoahoc FROM lop join nganh on lop.id_nganh=nganh.id join khoahoc on lop.id_khoahoc=khoahoc.id";
 	$rows = $db -> query($sql);
@@ -27,7 +27,7 @@ if($_SESSION['login_us']=='ok'&&!empty($_SESSION['quyen'])&&$_SESSION['quyen']==
 	}
 }
 else
-{header("location:login.php");}
+{header("location:index.php");}
 ?>
 <script>
 var mess="<?php echo $_REQUEST['mess']?>";

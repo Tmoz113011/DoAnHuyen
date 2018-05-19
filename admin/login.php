@@ -18,8 +18,10 @@
     <body>
         <?php
         session_start();
-            include "connect.php";
-        if ($_SERVER["REQUEST_METHOD"]=='POST')
+        include "connect.php";
+        if(empty($_SESSION['login_us']))
+{
+if ($_SERVER["REQUEST_METHOD"]=='POST')
         {
                 $username = $_POST["user"];
                 $password = $_POST["pass"];
@@ -36,12 +38,15 @@
         $sql = "select * from users where username ='$username' and password ='$password' ";
         $rows=$db->query($sql);
         $rs = $rows->fetch();
+        $quyen = explode(',',$rs['quyen']);
         if (!empty($rs))
         {
         $_SESSION['login_us']='ok';
         $_SESSION['username'] = $username;
-        $_SESSION['quyen'] = $rs['quyen'];
-        header('Location: index.php');
+        $_SESSION['quyen'] = $quyen;
+        if (!empty($_SESSION['login_us'])) {
+            header('Location: index.php');
+        }
         }
         else
         {
@@ -49,6 +54,10 @@
         }
         }
         }
+}
+else
+{header("location:index.php");}
+        
         ?>
         
         <br>

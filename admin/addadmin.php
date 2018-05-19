@@ -1,12 +1,13 @@
 <?php
-
+if($_SESSION['login_us']=='ok'&&!empty($_SESSION['quyen'])&&in_array('1', $_SESSION['quyen']))
+{
 if($_SERVER["REQUEST_METHOD"]=="POST")
 {
 
 $error = array();
 if(!empty($_POST['tendangnhap'])){
 $tendn=$_POST['tendangnhap'];
-$kt="select * from admin where username='$tendn'";
+$kt="select * from users where username='$tendn'";
 $kt1=$db->query($kt);
 $kt2=$kt1->fetch();
 }
@@ -36,10 +37,10 @@ $sdt=$_POST['sdt'];
 }
 if(!empty($_POST['quyen']))
 {
-$quyen=$_POST['quyen'];
+$quyen=implode(',',$_POST['quyen']);
 }
 if (isset($error)) {
-$query = "insert into users(username, password, hoten ,diachi , email, sdt, ngaytao, quyen) values('$tendn', '$matkhau', '$hoten', '$diachi', '$email', '$sdt', now(), $quyen)";
+$query = "insert into users(username, password, hoten ,diachi , email, sdt, ngaytao, quyen) values('$tendn', '$matkhau', '$hoten', '$diachi', '$email', '$sdt', now(), '$quyen')";
 $count=$db->exec($query);
 if($count>0)
 {
@@ -47,16 +48,24 @@ if($count>0)
 echo "<script>"
 . "if(confirm('Đăng ký thành viên thành công')==true)"
 . "{"
-. "window.location='index.php?page=admin'"
+. "window.location='index.php?page=nguoidung'"
 . "}</script>";
 }
 else
 {
-echo "<script>alert('Tài khoản đã tồn tại')</script>";
+echo "<script>alert('Tạo tài khoản thất bại')</script>";
+}
+}
+else
+{
+echo "<script>alert('Đăng ký thất bại')</script>";
 }
 }
 }
-?>
+else
+{header("location:index.php");}
+ ?>
+
 <div class="span9">
     <form action="" method="post">
         <fieldset>
@@ -98,9 +107,9 @@ echo "<script>alert('Tài khoản đã tồn tại')</script>";
             </div>
             <div class="control-group">
                 <label class="control-label tieude">Quyền:</label>
-                <input type="checkbox" name="quyen[]" class="form-control" value="">Admin
-                <input type="checkbox" name="quyen[]" class="form-control" value="">Giao viên
-                <input type="checkbox" name="quyen[]" class="form-control" value="">Thanh tra
+                <input type="checkbox" name="quyen[]" value="1">Admin
+                <input type="checkbox" name="quyen[]" value="2">Giao viên
+                <input type="checkbox" name="quyen[]" value="3">Thanh tra
             </div>
             <button type="submit" class="btn btn-success">Lưu</button>
         </form>

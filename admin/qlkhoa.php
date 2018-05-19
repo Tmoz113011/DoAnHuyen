@@ -1,5 +1,5 @@
 <?php 
-if($_SESSION['login_us']=='ok'&&!empty($_SESSION['quyen'])&&$_SESSION['quyen']==1)
+if($_SESSION['login_us']=='ok'&&!empty($_SESSION['quyen'])&&in_array('1', $_SESSION['quyen']))
 {
 	$sql = "SELECT * FROM khoa";
 	$rows = $db -> query($sql);
@@ -21,7 +21,7 @@ if($_SESSION['login_us']=='ok'&&!empty($_SESSION['quyen'])&&$_SESSION['quyen']==
 	}
 }
 else
-{header("location:login.php");}
+{header("location:index.php");}
  ?>
 <script>
 	var mess="<?php echo $_REQUEST['mess']?>";

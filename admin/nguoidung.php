@@ -2,6 +2,8 @@
 <h3>Danh sách Admin</h3>
 
 <?php
+if($_SESSION['login_us']=='ok'&&!empty($_SESSION['quyen'])&&in_array('1', $_SESSION['quyen']))
+{
 $query = "select * from users";
 $rows=$db->query($query);
 echo "<table class='table'>";
@@ -28,4 +30,8 @@ echo "<table class='table'>";
     }
                     
 echo "</table>";
+}
+else
+{header("location:index.php");}
+
 ?>

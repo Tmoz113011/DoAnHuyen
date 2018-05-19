@@ -1,3 +1,6 @@
+<?php
+ob_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -20,7 +23,8 @@
             include __DIR__ .'/header.php';
             
             ?>
-            <?php
+
+            <?php 
             session_start();
             if(!isset($_SESSION['login_us']))
             {header("location:login.php");}
@@ -36,7 +40,7 @@
                     <div class="col-md-9">
                         <?php
                         //admin
-                        if($_SESSION['login_us']=='ok'&&!empty($_SESSION['quyen'])&&$_SESSION['quyen']==1)
+                        if($_SESSION['login_us']=='ok'&&!empty($_SESSION['quyen'])&&in_array('1', $_SESSION['quyen']))
                         {
                         if(isset($_REQUEST['page']))
                         {
@@ -70,8 +74,8 @@
                                 case "xoakhoahoc":
                                 include "xoakhoahoc.php";
                                 break;
-                                case "admin":
-                                include "admin.php";
+                                case "nguoidung":
+                                include "nguoidung.php";
                                 break;
                                 case "addadmin":
                                 include "addadmin.php";
@@ -110,7 +114,7 @@
                         else include "home.php";
                         }
                         //giao viên
-                        elseif ($_SESSION['login_us']=='ok'&&!empty($_SESSION['quyen'])&&$_SESSION['quyen']==2) {
+                        elseif ($_SESSION['login_us']=='ok'&&!empty($_SESSION['quyen'])&&in_array('2', $_SESSION['quyen'])) {
                         if(isset($_REQUEST['page']))
                         {
                         $page=$_REQUEST['page'];
@@ -130,7 +134,7 @@
                         else include "home.php";
                         }
                         //thanhtra
-                        elseif ($_SESSION['login_us']=='ok'&&!empty($_SESSION['quyen'])&&$_SESSION['quyen']==2) {
+                        elseif ($_SESSION['login_us']=='ok'&&!empty($_SESSION['quyen'])&&in_array('3', $_SESSION['quyen'])) {
                         if(isset($_REQUEST['page']))
                         {
                         $page=$_REQUEST['page'];
