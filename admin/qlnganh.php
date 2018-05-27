@@ -101,11 +101,12 @@ if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('1',
                     <td><?php echo $i ?></td>
                     <td><?php echo $value['tennganh'] ?></td>
                     <td><?php echo $value['tenkhoa'] ?></td>
-                    <td><a href="javascript:void(0)"
+                    <td><a href="javascript:void(0)" class="btn btn-success"
                            onclick="edit('<?php echo $value[0] ?>','<?php echo $value['tennganh'] ?>','<?php echo $value[3] ?>')"
-                           title="">Sửa</a> | <a href="index.php?page=xoanganh&id=<?php echo $value['id'] ?>"
-                                                 onclick="return confirm('Bạn có chắc chắn muốn xóa không ?')"
-                                                 title="">Xóa</a></td>
+                           title=""><i class="fa fa-edit"></i></a> <a
+                                href="index.php?page=xoanganh&id=<?php echo $value['id'] ?>" class="btn btn-danger"
+                                onclick="return confirm('Bạn có chắc chắn muốn xóa không ?')"
+                                title=""><i class="fa fa-trash-o"></i></a></td>
                 </tr>
                 <?php
             }

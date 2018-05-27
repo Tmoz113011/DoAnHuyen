@@ -85,11 +85,13 @@ if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('1',
             <tr>
                 <td><?php echo $i ?></td>
                 <td><?php echo $value['tenkhoa'] ?></td>
-                <td><a href="javascript:void(0)"
-                       onclick="edit('<?php echo $value['id'] ?>','<?php echo $value['tenkhoa'] ?>')" title="">Sửa</a> |
-                    <a
-                            href="index.php?page=xoakhoa&id=<?php echo $value['id'] ?>"
-                            onclick="return confirm('Bạn có chắc chắn muốn xóa không ?')" title="">Xóa</a></td>
+                <td><a href="javascript:void(0)" class="btn btn-success"
+                       onclick="edit('<?php echo $value['id'] ?>','<?php echo $value['tenkhoa'] ?>')" title=""><i
+                                class="fa fa-edit"></i></a>
+                    <a class="btn btn-danger"
+                       href="index.php?page=xoakhoa&id=<?php echo $value['id'] ?>"
+                       onclick="return confirm('Bạn có chắc chắn muốn xóa không ?')" title=""><i
+                                class="fa fa-trash-o"></i></a></td>
             </tr>
             <?php
         }
