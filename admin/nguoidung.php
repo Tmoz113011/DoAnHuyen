@@ -1,5 +1,9 @@
-<a href="index.php?page=addadmin" class='btn btn-success' title="">Thêm mới</a>
-<h3>Danh sách Admin</h3>
+<div class="container">
+    <div class="title text-center">
+        <h3>Quản lý người dùng</h3>
+    </div>
+    <a href="index.php?page=addadmin" class='btn btn-success' title="">Thêm mới</a>
+    <h3>Danh sách người dùng</h3>
 
 <?php
 if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('1', $_SESSION['quyen'])) {
@@ -28,9 +32,10 @@ if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('1',
         }
     }
 
-    echo "</table>";
+    echo "</table>
+</div>
+";
 } else {
     header("location:index.php");
 }
-
 ?>

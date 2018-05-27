@@ -47,69 +47,74 @@ if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('1',
             break;
     }
 </script>
-<form action="" method="post" accept-charset="utf-8">
-    <input type="hidden" name="id" id='id' value="">
-    <div class="row">
-        <div class="col-md-5">
-            <label>Tên ngành:</label>
-            <input type="text" class="form-control" name="tennganh" id='tennganh' value="" required="">
-        </div>
+<div class="container">
+    <div class="title text-center">
+        <h3>Quản lý ngành</h3>
     </div>
-    <div class="row">
-        <div class="col-md-5">
-            <label>Chọn khoa:</label>
-            <select name="id_khoa" id="id_khoa" class="form-control">
-                <option value="">Chọn khoa</option>
-                <?php foreach ($rows1 as $value) { ?>
-                    <option value="<?php echo $value['id'] ?>"><?php echo $value['tenkhoa'] ?></option>
-                <?php } ?>
-            </select>
+    <form action="" method="post" accept-charset="utf-8">
+        <input type="hidden" name="id" id='id' value="">
+        <div class="row">
+            <div class="col-md-5">
+                <label>Tên ngành:</label>
+                <input type="text" class="form-control" name="tennganh" id='tennganh' value="" required="">
+            </div>
         </div>
-    </div>
+        <div class="row">
+            <div class="col-md-5">
+                <label>Chọn khoa:</label>
+                <select name="id_khoa" id="id_khoa" class="form-control">
+                    <option value="">Chọn khoa</option>
+                    <?php foreach ($rows1 as $value) { ?>
+                        <option value="<?php echo $value['id'] ?>"><?php echo $value['tenkhoa'] ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-5">
+                <input type="submit" class="btn btn-success" name="submit" value="Lưu">
+            </div>
+        </div>
+
+    </form>
     <br>
-    <div class="row">
-        <div class="col-md-5">
-            <input type="submit" class="btn btn-success" name="submit" value="Lưu">
-        </div>
-    </div>
-
-</form>
-<br>
-<br>
-<h3>Danh sách ngành</h3>
-<table class="table table-hover">
-    <thead>
-    <tr>
-        <th>STT</th>
-        <th>Tên ngành</th>
-        <th>Khoa</th>
-        <th>Hành động</th>
-    </tr>
-    </thead>
-    <tbody>
-    <?php
-    if (!empty($rows)) {
-        $i = 0;
-        foreach ($rows as $value) {
-            $i++;
-            ?>
-            <tr>
-                <td><?php echo $i ?></td>
-                <td><?php echo $value['tennganh'] ?></td>
-                <td><?php echo $value['tenkhoa'] ?></td>
-                <td><a href="javascript:void(0)"
-                       onclick="edit('<?php echo $value[0] ?>','<?php echo $value['tennganh'] ?>','<?php echo $value[3] ?>')"
-                       title="">Sửa</a> | <a href="index.php?page=xoanganh&id=<?php echo $value['id'] ?>"
-                                             onclick="return confirm('Bạn có chắc chắn muốn xóa không ?')"
-                                             title="">Xóa</a></td>
-            </tr>
-            <?php
+    <br>
+    <h3>Danh sách ngành</h3>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>STT</th>
+            <th>Tên ngành</th>
+            <th>Khoa</th>
+            <th>Hành động</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php
+        if (!empty($rows)) {
+            $i = 0;
+            foreach ($rows as $value) {
+                $i++;
+                ?>
+                <tr>
+                    <td><?php echo $i ?></td>
+                    <td><?php echo $value['tennganh'] ?></td>
+                    <td><?php echo $value['tenkhoa'] ?></td>
+                    <td><a href="javascript:void(0)"
+                           onclick="edit('<?php echo $value[0] ?>','<?php echo $value['tennganh'] ?>','<?php echo $value[3] ?>')"
+                           title="">Sửa</a> | <a href="index.php?page=xoanganh&id=<?php echo $value['id'] ?>"
+                                                 onclick="return confirm('Bạn có chắc chắn muốn xóa không ?')"
+                                                 title="">Xóa</a></td>
+                </tr>
+                <?php
+            }
         }
-    }
-    ?>
+        ?>
 
-    </tbody>
-</table>
+        </tbody>
+    </table>
+</div>
 <script>
     function edit(id, name, id_khoa) {
         document.getElementById('id').value = id

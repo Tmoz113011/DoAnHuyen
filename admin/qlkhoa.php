@@ -44,55 +44,61 @@ if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('1',
             break;
     }
 </script>
-<form action="" method="post" accept-charset="utf-8">
-    <input type="hidden" name="id" id='id' value="">
-    <div class="row">
-        <div class="col-md-5">
-            <label>Tên khoa:</label>
-            <input type="text" class="form-control" name="tenkhoa" id='tenkhoa' value="" required="">
-        </div>
+<div class="container">
+    <div class="title text-center">
+        <h3>Quản lý khoa</h3>
     </div>
+    <form action="" method="post" accept-charset="utf-8">
+        <input type="hidden" name="id" id='id' value="">
+        <div class="row">
+            <div class="col-md-5">
+                <label>Tên khoa:</label>
+                <input type="text" class="form-control" name="tenkhoa" id='tenkhoa' value="" required="">
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-5">
+                <input type="submit" class="btn btn-success" name="submit" value="Lưu">
+            </div>
+        </div>
+
+    </form>
     <br>
-    <div class="row">
-        <div class="col-md-5">
-            <input type="submit" class="btn btn-success" name="submit" value="Lưu">
-        </div>
-    </div>
-
-</form>
-<br>
-<br>
-<h3>Danh sách khoa</h3>
-<table class="table table-hover">
-    <thead>
-    <tr>
-        <th>STT</th>
-        <th>Tên khoa</th>
-        <th>Hành động</th>
-    </tr>
-    </thead>
-    <tbody>
-    <?php
-
-    $i = 0;
-    foreach ($rows as $value) {
-        $i++;
-        ?>
+    <br>
+    <h3>Danh sách khoa</h3>
+    <table class="table table-hover">
+        <thead>
         <tr>
-            <td><?php echo $i ?></td>
-            <td><?php echo $value['tenkhoa'] ?></td>
-            <td><a href="javascript:void(0)"
-                   onclick="edit('<?php echo $value['id'] ?>','<?php echo $value['tenkhoa'] ?>')" title="">Sửa</a> | <a
-                        href="index.php?page=xoakhoa&id=<?php echo $value['id'] ?>"
-                        onclick="return confirm('Bạn có chắc chắn muốn xóa không ?')" title="">Xóa</a></td>
+            <th>STT</th>
+            <th>Tên khoa</th>
+            <th>Hành động</th>
         </tr>
+        </thead>
+        <tbody>
         <?php
-    }
 
-    ?>
+        $i = 0;
+        foreach ($rows as $value) {
+            $i++;
+            ?>
+            <tr>
+                <td><?php echo $i ?></td>
+                <td><?php echo $value['tenkhoa'] ?></td>
+                <td><a href="javascript:void(0)"
+                       onclick="edit('<?php echo $value['id'] ?>','<?php echo $value['tenkhoa'] ?>')" title="">Sửa</a> |
+                    <a
+                            href="index.php?page=xoakhoa&id=<?php echo $value['id'] ?>"
+                            onclick="return confirm('Bạn có chắc chắn muốn xóa không ?')" title="">Xóa</a></td>
+            </tr>
+            <?php
+        }
 
-    </tbody>
-</table>
+        ?>
+
+        </tbody>
+    </table>
+</div>
 <script>
     function edit(id, name) {
         document.getElementById('id').value = id
