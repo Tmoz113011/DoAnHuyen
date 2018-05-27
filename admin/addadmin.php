@@ -1,70 +1,56 @@
 <?php
-if($_SESSION['login_us']=='ok'&&!empty($_SESSION['quyen'])&&in_array('1', $_SESSION['quyen']))
-{
-if($_SERVER["REQUEST_METHOD"]=="POST")
-{
+if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('1', $_SESSION['quyen'])) {
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-$error = array();
-if(!empty($_POST['tendangnhap'])){
-$tendn=$_POST['tendangnhap'];
-$kt="select * from users where username='$tendn'";
-$kt1=$db->query($kt);
-$kt2=$kt1->fetch();
-}
-if(isset($kt2) && $kt2>0)
-{
-$error[]='trungten';
-}
-if(!empty($_POST['matkhau']))
-{
-$matkhau=md5($_POST['matkhau']);
-}
-if(!empty($_POST['hoten']))
-{
-$hoten=$_POST['hoten'];
-}
-if(!empty($_POST['diachi']))
-{
-$diachi=$_POST['diachi'];
-}
-if(!empty($_POST['email']))
-{
-$email=$_POST['email'];
-}
-if(!empty($_POST['sdt']))
-{
-$sdt=$_POST['sdt'];
-}
-if(!empty($_POST['quyen']))
-{
-$quyen=implode(',',$_POST['quyen']);
-}
-if (isset($error)) {
-$query = "insert into users(username, password, hoten ,diachi , email, sdt, ngaytao, quyen) values('$tendn', '$matkhau', '$hoten', '$diachi', '$email', '$sdt', now(), '$quyen')";
-$count=$db->exec($query);
-if($count>0)
-{
+        $error = array();
+        if (!empty($_POST['tendangnhap'])) {
+            $tendn = $_POST['tendangnhap'];
+            $kt = "select * from users where username='$tendn'";
+            $kt1 = $db->query($kt);
+            $kt2 = $kt1->fetch();
+        }
+        if (isset($kt2) && $kt2 > 0) {
+            $error[] = 'trungten';
+        }
+        if (!empty($_POST['matkhau'])) {
+            $matkhau = md5($_POST['matkhau']);
+        }
+        if (!empty($_POST['hoten'])) {
+            $hoten = $_POST['hoten'];
+        }
+        if (!empty($_POST['diachi'])) {
+            $diachi = $_POST['diachi'];
+        }
+        if (!empty($_POST['email'])) {
+            $email = $_POST['email'];
+        }
+        if (!empty($_POST['sdt'])) {
+            $sdt = $_POST['sdt'];
+        }
+        if (!empty($_POST['quyen'])) {
+            $quyen = implode(',', $_POST['quyen']);
+        }
+        if (isset($error)) {
+            $query = "insert into users(username, password, hoten ,diachi , email, sdt, ngaytao, quyen) values('$tendn', '$matkhau', '$hoten', '$diachi', '$email', '$sdt', now(), '$quyen')";
+            $count = $db->exec($query);
+            if ($count > 0) {
 // header("location:?page=login");
-echo "<script>"
-. "if(confirm('Đăng ký thành viên thành công')==true)"
-. "{"
-. "window.location='index.php?page=nguoidung'"
-. "}</script>";
+                echo "<script>"
+                    . "if(confirm('Đăng ký thành viên thành công')==true)"
+                    . "{"
+                    . "window.location='index.php?page=nguoidung'"
+                    . "}</script>";
+            } else {
+                echo "<script>alert('Tạo tài khoản thất bại')</script>";
+            }
+        } else {
+            echo "<script>alert('Đăng ký thất bại')</script>";
+        }
+    }
+} else {
+    header("location:index.php");
 }
-else
-{
-echo "<script>alert('Tạo tài khoản thất bại')</script>";
-}
-}
-else
-{
-echo "<script>alert('Đăng ký thất bại')</script>";
-}
-}
-}
-else
-{header("location:index.php");}
- ?>
+?>
 
 <div class="span9">
     <form action="" method="post">
@@ -112,5 +98,5 @@ else
                 <input type="checkbox" name="quyen[]" value="3">Thanh tra
             </div>
             <button type="submit" class="btn btn-success">Lưu</button>
-        </form>
-    </div>
+    </form>
+</div>
