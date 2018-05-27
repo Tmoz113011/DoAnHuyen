@@ -52,51 +52,56 @@ if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('1',
 }
 ?>
 
-<div class="span9">
-    <form action="" method="post">
-        <fieldset>
-            <div class="control-group">
-                <label class="control-label tieude">Tên đăng nhập:</label>
-                <div class="controls">
-                    <input type="text" class="form-control" name="tendangnhap" required="">
+<div class="container">
+    <div class="title text-center">
+        <h3>Thêm người dùng</h3>
+    </div>
+    <div class="span9">
+        <form action="" method="post">
+            <fieldset>
+                <div class="control-group">
+                    <label class="control-label tieude">Tên đăng nhập:</label>
+                    <div class="controls">
+                        <input type="text" class="form-control" name="tendangnhap" required="">
+                    </div>
                 </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label tieude">Mật khẩu:</label>
-                <div class="controls">
-                    <input type="password" class="form-control" name="matkhau" required="">
+                <div class="control-group">
+                    <label class="control-label tieude">Mật khẩu:</label>
+                    <div class="controls">
+                        <input type="password" class="form-control" name="matkhau" required="">
+                    </div>
                 </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label tieude">Họ và tên:</label>
-                <div class="controls">
-                    <input type="text" class="form-control" name="hoten" required="">
+                <div class="control-group">
+                    <label class="control-label tieude">Họ và tên:</label>
+                    <div class="controls">
+                        <input type="text" class="form-control" name="hoten" required="">
+                    </div>
                 </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label tieude">Địa chỉ:</label>
-                <div class="controls">
-                    <input type="text" class="form-control" name="diachi" required="">
+                <div class="control-group">
+                    <label class="control-label tieude">Địa chỉ:</label>
+                    <div class="controls">
+                        <input type="text" class="form-control" name="diachi" required="">
+                    </div>
                 </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label tieude">Email:</label>
-                <div class="controls">
-                    <input type="email" class="form-control" name="email" required="">
+                <div class="control-group">
+                    <label class="control-label tieude">Email:</label>
+                    <div class="controls">
+                        <input type="email" class="form-control" name="email" required="">
+                    </div>
                 </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label tieude">Số điện thoại</label>
-                <div class="controls">
-                    <input type="text" class="form-control" name="sdt" required="">
+                <div class="control-group">
+                    <label class="control-label tieude">Số điện thoại</label>
+                    <div class="controls">
+                        <input type="text" class="form-control" name="sdt" required="">
+                    </div>
                 </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label tieude">Quyền:</label>
-                <input type="checkbox" name="quyen[]" value="1">Admin
-                <input type="checkbox" name="quyen[]" value="2">Giao viên
-                <input type="checkbox" name="quyen[]" value="3">Thanh tra
-            </div>
-            <button type="submit" class="btn btn-success">Lưu</button>
-    </form>
+                <div class="control-group">
+                    <label class="control-label tieude">Quyền:</label>
+                    <input type="checkbox" name="quyen[]" value="1">Admin
+                    <input type="checkbox" name="quyen[]" value="2">Giao viên
+                    <input type="checkbox" name="quyen[]" value="3">Thanh tra
+                </div>
+                <button type="submit" class="btn btn-success">Lưu</button>
+        </form>
+    </div>
 </div>

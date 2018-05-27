@@ -108,7 +108,12 @@ include __DIR__ . '/header.php';
                 if (isset($_REQUEST['page'])) {
                     $page = $_REQUEST['page'];
                     switch ($page) {
-
+                        case 'bcthang';
+                            include "bcthang.php";
+                            break;
+                        case 'addbcthang';
+                            include "addbcthang.php";
+                            break;
                         case 'logout';
                             include "logout.php";
                             break;

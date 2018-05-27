@@ -14,7 +14,7 @@ if (!isset($_SESSION['login_us'])) {
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">Hệ thống quản lý công tác giáo viên chủ nghiệm</a>
+            <a class="navbar-brand" href="index.php">Hệ thống quản lý công tác giáo viên chủ nghiệm</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -27,7 +27,7 @@ if (!isset($_SESSION['login_us'])) {
                     if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('1', $_SESSION['quyen'])) { ?>
                         <li class="<?php echo ($_GET['page'] == "qlkhoa") ? "active" : "" ?>"><a
                                     href="index.php?page=qlkhoa"><i class="fa fa-list-alt"></i> Quản lý khoa</a></li>
-                        <li class="<?php echo ($_GET['page'] == "qlnganh") ? "active" : "" ?>">><a
+                        <li class="<?php echo ($_GET['page'] == "qlnganh") ? "active" : "" ?>"><a
                                     href="index.php?page=qlnganh"><i class="fa fa-list-alt"></i> Quản lý ngành</a></li>
                         <li class="<?php echo ($_GET['page'] == "qllop") ? "active" : "" ?>"><a
                                     href="index.php?page=qllop"><i class="fa fa-list-alt"></i> Quản lý lớp</a></li>
@@ -92,7 +92,7 @@ if (!isset($_SESSION['login_us'])) {
             </ul>
             <ul class="nav navbar-nav navbar-right navbar-user">
                 <li>
-                    <a href="javascript:void(0)"> Xin chào admin!</a>
+                    <a href="javascript:void(0)"> Xin chào <?php echo $_SESSION['username'] ?>!</a>
                 </li>
                 <li>
                     <a href="index.php?page=logout"><i class="fa fa-power-off"></i>Thoát</a>
