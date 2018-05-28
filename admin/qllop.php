@@ -128,6 +128,10 @@ if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('1',
         </thead>
         <tbody>
         <?php
+        $format = 'The %2$s contains %1$d monkeys';
+        $num = 5;
+        $location = 'tree';
+        echo sprintf($format, $num, $location);
         if (!empty($rows)) {
             $i = 0;
             foreach ($rows as $value) {
