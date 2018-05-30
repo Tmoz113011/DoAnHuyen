@@ -25,40 +25,44 @@ if (!isset($_SESSION['login_us'])) {
                 //admin
                 if (!empty($_SESSION['login_us'])) {
                     if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('1', $_SESSION['quyen'])) { ?>
-                        <li class="<?php echo ($_GET['page'] == "qlkhoa") ? "active" : "" ?>"><a
+                        <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "qlkhoa") ? "active" : "" ?>"><a
                                     href="index.php?page=qlkhoa"><i class="fa fa-list-alt"></i> Quản lý khoa</a></li>
-                        <li class="<?php echo ($_GET['page'] == "qlnganh") ? "active" : "" ?>"><a
+                        <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "qlnganh") ? "active" : "" ?>">
+                            <a
                                     href="index.php?page=qlnganh"><i class="fa fa-list-alt"></i> Quản lý ngành</a></li>
-                        <li class="<?php echo ($_GET['page'] == "qllop") ? "active" : "" ?>"><a
+                        <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "qllop") ? "active" : "" ?>"><a
                                     href="index.php?page=qllop"><i class="fa fa-list-alt"></i> Quản lý lớp</a></li>
-                        <li class="<?php echo ($_GET['page'] == "qlkhoahoc") ? "active" : "" ?>"><a
+                        <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "qlkhoahoc") ? "active" : "" ?>">
+                            <a
                                     href="index.php?page=qlkhoahoc"><i class="fa fa-list-alt"></i> Quản lý khóa học</a>
                         </li>
-                        <li class="<?php echo ($_GET['page'] == "baocao") ? "active" : "" ?>"><a
+                        <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "baocao") ? "active" : "" ?>"><a
                                     href="index.php?page=baocao"><i class="fa fa-list-alt"></i> Báo cáo</a></li>
-                        <li class="<?php echo ($_GET['page'] == "nguoidung") ? "active" : "" ?>"><a
+                        <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "nguoidung") ? "active" : "" ?>">
+                            <a
                                     href="index.php?page=nguoidung"><i class="fa fa-users"></i> Quản lý người
                                 dùng</a></li>
-                        <li class="<?php echo ($_GET['page'] == "logout") ? "active" : "" ?>"><a
+                        <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "logout") ? "active" : "" ?>"><a
                                     href="index.php?page=logout"><i class="fa fa-power-off"></i> Thoát </a>
                         </li>
                     <?php } //giao viên
                     elseif ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('2', $_SESSION['quyen'])) {
                         ?>
-                        <li class="<?php echo ($_GET['page'] == "bcthang") ? "active" : "" ?>"><a
+                        <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "bcthang") ? "active" : "" ?>">
+                            <a
                                     href="index.php?page=bcthang"><i class="fa fa-list-alt"></i> Báo cáo theo tháng</a>
                         </li>
-                        <li class="<?php echo ($_GET['page'] == "bcky") ? "active" : "" ?>"><a
+                        <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "bcky") ? "active" : "" ?>"><a
                                     href="index.php?page=bcky"><i class="fa fa-list-alt"></i> Báo cáo theo kỳ</a></li>
-                        <li class="<?php echo ($_GET['page'] == "dkshl") ? "active" : "" ?>"><a
+                        <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "dkshl") ? "active" : "" ?>"><a
                                     href="index.php?page=dkshl"><i class="fa fa-list-alt"></i> Đăng ký sinh hoạt lớp</a>
                         </li>
-                        <li class="<?php echo ($_GET['page'] == "dgxl") ? "active" : "" ?>"><a
+                        <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "dgxl") ? "active" : "" ?>"><a
                                     href="index.php?page=dgxl"><i class="fa fa-list-alt"></i> Đánh giá xếp loại</a></li>
-                        <li class="<?php echo ($_GET['page'] == "xlcb") ? "active" : "" ?>"><a
+                        <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "xlcb") ? "active" : "" ?>"><a
                                     href="index.php?page=xlcb"><i class="fa fa-address-card-o"></i> Xếp loại cán bộ lớp</a>
                         </li>
-                        <li class="<?php echo ($_GET['page'] == "logout") ? "active" : "" ?>"><a
+                        <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "logout") ? "active" : "" ?>"><a
                                     href="index.php?page=logout"><i class="fa fa-power-off"></i> Thoát </a>
                         </li>
                         <?php

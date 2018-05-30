@@ -128,6 +128,10 @@ if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('1',
         </thead>
         <tbody>
         <?php
+        $format = 'The %2$s contains %1$d monkeys';
+        $num = 5;
+        $location = 'tree';
+        echo sprintf($format, $num, $location);
         if (!empty($rows)) {
             $i = 0;
             foreach ($rows as $value) {
@@ -139,11 +143,12 @@ if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('1',
                     <td><?php echo $value['tenlop'] ?></td>
                     <td><?php echo $value['tennganh'] ?></td>
                     <td><?php echo $value['makhoahoc'] ?></td>
-                    <td><a href="javascript:void(0)"
+                    <td><a href="javascript:void(0)" class="btn btn-success"
                            onclick="edit('<?php echo $value[0] ?>','<?php echo $value['malop'] ?>','<?php echo $value['tenlop'] ?>','<?php echo $value[4] ?>','<?php echo $value[5] ?>','<?php echo $value[8] ?>')"
-                           title="">Sửa</a> | <a href="index.php?page=xoalop&id=<?php echo $value['id'] ?>"
-                                                 onclick="return confirm('Bạn có chắc chắn muốn xóa không ?')"
-                                                 title="">Xóa</a></td>
+                           title=""><i class="fa fa-edit"></i></a> <a
+                                href="index.php?page=xoalop&id=<?php echo $value['id'] ?>" class="btn btn-danger"
+                                onclick="return confirm('Bạn có chắc chắn muốn xóa không ?')"
+                                title=""><i class="fa fa-trash-o"></i></a></td>
                 </tr>
                 <?php
             }
