@@ -96,6 +96,7 @@ include __DIR__ . '/header.php';
                         case 'nguoidung';
                             include "nguoidung.php";
                             break;
+
                         default:
                             include "home.php";
                             break;
@@ -134,6 +135,9 @@ include __DIR__ . '/header.php';
                             break;
                         case 'logout';
                             include "logout.php";
+                            break;
+                        case 'ds_dkshl';
+                            include "ds_dkshl.php";
                             break;
                         default:
                             include "home.php";

@@ -20,6 +20,7 @@ if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('2',
         <table class="table table-hover">
             <thead>
             <tr>
+                <th>STT</th>
                 <th>Khóa</th>
                 <th>Lớp</th>
                 <th>Tháng</th>
@@ -28,17 +29,26 @@ if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('2',
             </tr>
             </thead>
             <tbody>
+            <?php 
+            $query = "SELECT khoa.tenkhoa,lop.malop,bc_thang.ki,bc_thang.thang FROM bc_thang join lop on lop.id=bc_thang.id_lop join khoa on lop.id_khoa=khoa.id";
+            $rows = $db -> query($query);
+            $i = 0;
+            foreach ($rows as $key => $value) { 
+            $i++;
+            ?>
             <tr>
-                <td>K65</td>
-                <td>HT23</td>
-                <td>Tháng 2</td>
-                <td>Kỳ 2</td>
+                <td><?php echo $i ?></td>
+                <td><?php echo $value['0'] ?></td>
+                <td><?php echo $value['1'] ?></td>
+                <td><?php echo $value['2'] ?></td>
+                <td><?php echo $value['3'] ?></td>
                 <td>
                     <a href="index.php?page=ctbcthang" class="btn btn-primary"><i class="fa fa-eye"></i></a>
                     <a href="" class="btn btn-success"><i class="fa fa-edit"></i></a>
                     <a href="" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
                 </td>
             </tr>
+        <?php } ?>
             </tbody>
         </table>
 

@@ -55,7 +55,7 @@ if (!isset($_SESSION['login_us'])) {
                         <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "bcky") ? "active" : "" ?>"><a
                                     href="index.php?page=bcky"><i class="fa fa-list-alt"></i> Báo cáo theo kỳ</a></li>
                         <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "dkshl") ? "active" : "" ?>"><a
-                                    href="index.php?page=dkshl"><i class="fa fa-list-alt"></i> Đăng ký sinh hoạt lớp</a>
+                                    href="index.php?page=ds_dkshl"><i class="fa fa-list-alt"></i> Đăng ký sinh hoạt lớp</a>
                         </li>
                         <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "dgxl") ? "active" : "" ?>"><a
                                     href="index.php?page=dgxl"><i class="fa fa-list-alt"></i> Đánh giá xếp loại</a></li>
