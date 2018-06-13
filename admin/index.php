@@ -102,7 +102,9 @@ include __DIR__ . '/header.php';
                         case 'nguoidung';
                             include "nguoidung.php";
                             break;
-
+                        case 'suaTK';
+                            include "suaTK.php";
+                            break;
                         default:
                             include "home.php";
                             break;
@@ -136,11 +138,14 @@ include __DIR__ . '/header.php';
                         case 'dkshl';
                             include "dkshl.php";
                             break;
-                        case 'dgxl';
-                            include "dgxl.php";
-                            break;
+//                        case 'dgxl';
+//                            include "dgxl.php";
+//                            break;
                         case 'xlcb';
                             include "xlcb.php";
+                            break;
+                        case 'suaTK';
+                            include "suaTK.php";
                             break;
                         case 'logout';
                             include "logout.php";
