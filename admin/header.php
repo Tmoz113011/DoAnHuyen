@@ -65,8 +65,8 @@ if (!isset($_SESSION['login_us'])) {
                         <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "dkshl") ? "active" : "" ?>"><a
                                     href="index.php?page=ds_dkshl"><i class="fa fa-list-alt"></i> Đăng ký sinh hoạt lớp</a>
                         </li>
-                        <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "dgxl") ? "active" : "" ?>"><a
-                                    href="index.php?page=dgxl"><i class="fa fa-list-alt"></i> Đánh giá xếp loại</a></li>
+                        <!--                        <li class="--><?php //echo (isset($_GET['page']) && $_GET['page'] == "dgxl") ? "active" : "" ?><!--"><a-->
+                        <!--                                    href="index.php?page=dgxl"><i class="fa fa-list-alt"></i> Đánh giá xếp loại</a></li>-->
                         <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "xlcb") ? "active" : "" ?>"><a
                                     href="index.php?page=xlcb"><i class="fa fa-address-card-o"></i> Xếp loại cán bộ lớp</a>
                         </li>
@@ -104,7 +104,7 @@ if (!isset($_SESSION['login_us'])) {
             </ul>
             <ul class="nav navbar-nav navbar-right navbar-user">
                 <li>
-                    <a href="javascript:void(0)"> Xin chào <?php echo $_SESSION['username'] ?>!</a>
+                    <a href="index.php?page=suaTK"> Xin chào <?php echo $_SESSION['username'] ?>!</a>
                 </li>
                 <li>
                     <a href="index.php?page=logout"><i class="fa fa-power-off"></i>Thoát</a>
