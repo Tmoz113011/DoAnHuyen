@@ -15,10 +15,16 @@ ob_start();
     <link href="css/bootstrap.css" rel="stylesheet">
 
     <!-- Add custom CSS here -->
+    <link href="css/css/style.css" rel="stylesheet">
     <link href="css/sb-admin.css" rel="stylesheet">
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
     <!-- Page Specific CSS -->
     <link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css">
+    <style>
+        .mt-2 {
+            margin-top: 2rem;
+        }
+    </style>
 </head>
 <body>
 <?php
@@ -96,7 +102,9 @@ include __DIR__ . '/header.php';
                         case 'nguoidung';
                             include "nguoidung.php";
                             break;
-
+                        case 'suaTK';
+                            include "suaTK.php";
+                            break;
                         default:
                             include "home.php";
                             break;
@@ -130,8 +138,14 @@ include __DIR__ . '/header.php';
                         case 'dkshl';
                             include "dkshl.php";
                             break;
-                        case 'dgxl';
-                            include "dgxl.php";
+//                        case 'dgxl';
+//                            include "dgxl.php";
+//                            break;
+                        case 'xlcb';
+                            include "xlcb.php";
+                            break;
+                        case 'suaTK';
+                            include "suaTK.php";
                             break;
                         case 'logout';
                             include "logout.php";

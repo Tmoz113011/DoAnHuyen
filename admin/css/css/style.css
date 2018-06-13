@@ -407,3 +407,8 @@ blockquote small::before {
     /* margin-left:  0; */
     padding-left: 0;
 }
+
+.btn-block {
+    padding-top: 10% !important;
+    padding-bottom: 10% !important;
+}
