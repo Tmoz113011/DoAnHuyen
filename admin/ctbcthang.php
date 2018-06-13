@@ -62,7 +62,7 @@ if (!empty($_GET['id'])) {
                                     <label for=""> Tháng:</label>
                                     <select name="thang" class="form-control" id="" disabled>
                                         <?php for ($i = 1; $i <= 12; $i++) { ?>
-                                            <option value="<?php echo $i ?>">
+                                            <option value="<?php echo $i ?>"  <?php echo (@$val[3]==$i)?'selected':'' ?>>
                                                 Tháng <?php echo $i ?>
                                             </option>
                                         <?php } ?>
@@ -74,7 +74,7 @@ if (!empty($_GET['id'])) {
                                     <label for=""> Kỳ:</label>
                                     <select name="ki" class="form-control" id="" disabled>
                                         <?php for ($i = 1; $i <= 10; $i++) { ?>
-                                            <option value="<?php echo $i ?>">
+                                            <option value="<?php echo $i ?>" <?php echo (@$val[4]==$i)?'selected':'' ?>>
                                                 Kì <?php echo $i ?>
                                             </option>
                                         <?php } ?>

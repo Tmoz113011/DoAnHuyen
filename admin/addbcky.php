@@ -16,6 +16,7 @@ if (!empty($_GET['id'])) {
     $value = $rows -> fetch();
 }
 if (!empty($_POST['submit'])) {
+$ki = $_POST['ki'];
 $nam_hoc = $_POST['nam_hoc'];
 $tong_sv = $_POST['tong_sv'];
 $tbc = $_POST['tbc'];
@@ -30,17 +31,17 @@ $thamgia_hd = (!empty($_POST['thamgia_hd']))?1:0;
 $duoc_knapdang = (!empty($_POST['duoc_knapdang']))?1:0;
 $lop_truong = $_POST['lop_truong'];
 $xl_lt = $_POST['xl_lt'];
-$lop_pho_ht = $_POST['lop_truong'];
+$lop_pho_ht = $_POST['lop_pho_ht'];
 $xl_lp_ht = $_POST['xl_lp_ht'];
 $lop_pho_ds = $_POST['lop_pho_ds'];
 $xl_lp_ds = $_POST['xl_lp_ds'];
 
 if (empty($_POST['id'])) {
-$query = "INSERT INTO `bc_ky`( `id_lop`, `nam_hoc`, `tong_sv`, `tbc`, `loai_xs`, `loai_gioi`, `loai_kha`, `loai_tb`, `loai_yeu`, `tapthe_tt_xs`, `dat_giai`, `thamgia_hd`, `duoc_knapdang`, `lop_truong`, `xl_lt`, `lop_pho_ht`, `xl_lp_ht`, `lop_pho_ds`, `xl_lp_ds`) VALUES (".$_SESSION['lop']['id'].",$nam_hoc ,$tong_sv ,$tbc ,$loai_xs ,$loai_gioi ,$loai_kha ,$loai_tb ,$loai_yeu ,$tapthe_tt_xs ,$dat_giai ,$thamgia_hd ,$duoc_knapdang ,'$lop_truong' ,$xl_lt ,'$lop_pho_ht' ,$xl_lp_ht ,'$lop_pho_ds' ,$xl_lp_ds)";
+$query = "INSERT INTO `bc_ky`( `id_lop`, `ki`, `nam_hoc`, `tong_sv`, `tbc`, `loai_xs`, `loai_gioi`, `loai_kha`, `loai_tb`, `loai_yeu`, `tapthe_tt_xs`, `dat_giai`, `thamgia_hd`, `duoc_knapdang`, `lop_truong`, `xl_lt`, `lop_pho_ht`, `xl_lp_ht`, `lop_pho_ds`, `xl_lp_ds`) VALUES (".$_SESSION['lop']['id'].",$ki,'$nam_hoc' ,$tong_sv ,$tbc ,$loai_xs ,$loai_gioi ,$loai_kha ,$loai_tb ,$loai_yeu ,$tapthe_tt_xs ,$dat_giai ,$thamgia_hd ,$duoc_knapdang ,'$lop_truong' ,$xl_lt ,'$lop_pho_ht' ,$xl_lp_ht ,'$lop_pho_ds' ,$xl_lp_ds)";
 }
 else
 {
-    $query = "UPDATE `bc_ky` SET  `nam_hoc`=$nam_hoc, `tong_sv`=$tong_sv, `tbc`=$tbc, `loai_xs`=$loai_xs, `loai_gioi`=$loai_gioi, `loai_kha`=$loai_kha, `loai_tb`=$loai_tb, `loai_yeu`=$loai_yeu, `tapthe_tt_xs`=$tapthe_tt_xs, `dat_giai`=$dat_giai, `thamgia_hd`=$thamgia_hd, `duoc_knapdang`=$duoc_knapdang, `lop_truong`=$lop_truong, `xl_lt`=$xl_lt, `lop_pho_ht`=$lop_pho_ht, `xl_lp_ht`=$xl_lp_ht, `lop_pho_ds`=$lop_pho_ds, `xl_lp_ds`=$xl_lp_ds WHERE id=". $_GET['id'];
+    $query = "UPDATE `bc_ky` SET  `ki`=$ki,`nam_hoc`='$nam_hoc', `tong_sv`=$tong_sv, `tbc`=$tbc, `loai_xs`=$loai_xs, `loai_gioi`=$loai_gioi, `loai_kha`=$loai_kha, `loai_tb`=$loai_tb, `loai_yeu`=$loai_yeu, `tapthe_tt_xs`=$tapthe_tt_xs, `dat_giai`=$dat_giai, `thamgia_hd`=$thamgia_hd, `duoc_knapdang`=$duoc_knapdang, `lop_truong`=$lop_truong, `xl_lt`=$xl_lt, `lop_pho_ht`=$lop_pho_ht, `xl_lp_ht`=$xl_lp_ht, `lop_pho_ds`=$lop_pho_ds, `xl_lp_ds`=$xl_lp_ds WHERE id=". $_GET['id'];
 }
 $save = $db->exec($query);
 }
@@ -161,21 +162,21 @@ $save = $db->exec($query);
                         <div>
                             <p class="blue"><b>3. Hoạt động phong trào</b></p>
                             <div class="form-group">
-                                <input type="checkbox" name="tapthe_tt_xs" value="<?php echo @$value[11] ?>" <?php echo (@$value[11]==1)?'checked':'' ?>>
+                                <input type="checkbox" name="tapthe_tt_xs" value="1" <?php echo (@$value[11]==1)?'checked':'' ?>>
                                 <label for=""> Tập thể lớp đạt tiên tiến, xuất sắc</label>
                             </div>
                             <div class="form-group">
-                                <input type="checkbox" name="dat_giai" value="<?php echo @$value[12] ?>"  <?php echo (@$value[12]==1)?'checked':'' ?>>
+                                <input type="checkbox" name="dat_giai" value="1"  <?php echo (@$value[12]==1)?'checked':'' ?>>
                                 <label for=""> Lớp có sinh viên đạt giải thi sinh viên giỏi, Olympic, văn hóa, văn
                                     nghệ, thể thao từ Cấp Trường trở lên</label>
                             </div>
                             <div class="form-group">
-                                <input type="checkbox" name="thamgia_hd" value="<?php echo @$value[13] ?>" <?php echo (@$value[13]==1)?'checked':'' ?>>
+                                <input type="checkbox" name="thamgia_hd" value="1" <?php echo (@$value[13]==1)?'checked':'' ?>>
                                 <label for=""> Lớp có nhiều sinh viên tham gia các hoạt dộng vì cộng đồng (tình
                                     nguyện, hiến máu nhân đạo, tự quản...)</label>
                             </div>
                             <div class="form-group">
-                                <input type="checkbox" name=duoc_knapdang" value="<?php echo @$value[14] ?>" <?php echo (@$value[14]==1)?'checked':'' ?>>
+                                <input type="checkbox" name="duoc_knapdang" value="1" <?php echo (@$value[14]==1)?'checked':'' ?>>
                                 <label for=""> Lớp có sinh viên được kết nạp Đảng trong kỳ</label>
                             </div>
 

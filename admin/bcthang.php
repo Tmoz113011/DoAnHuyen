@@ -30,7 +30,7 @@ if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('2',
             </thead>
             <tbody>
             <?php 
-            $query = "SELECT khoa.tenkhoa,lop.malop,bc_thang.ki,bc_thang.thang,bc_thang.id FROM bc_thang join lop on lop.id=bc_thang.id_lop join khoa on lop.id_khoa=khoa.id where lop.id=".$_SESSION['lop']['id'];
+            $query = "SELECT khoa.tenkhoa,lop.malop,bc_thang.thang,bc_thang.ki,bc_thang.id FROM bc_thang join lop on lop.id=bc_thang.id_lop join khoa on lop.id_khoa=khoa.id where lop.id=".$_SESSION['lop']['id'];
             $rows = $db -> query($query);
             $i = 0;
             foreach ($rows as $key => $value) { 
@@ -45,7 +45,7 @@ if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('2',
                 <td>
                     <a href="index.php?page=ctbcthang&id=<?php echo $value[4] ?>" class="btn btn-primary"><i class="fa fa-eye"></i></a>
                     <a href="index.php?page=addbcthang&id=<?php echo $value[4] ?>" class="btn btn-success"><i class="fa fa-edit"></i></a>
-                    <a href="" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
+                    <a href="index.php?page=del_bcthang&id=<?php echo $value[4] ?>" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
                 </td>
             </tr>
         <?php } ?>

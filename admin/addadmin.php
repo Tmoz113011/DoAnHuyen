@@ -28,7 +28,7 @@ if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('1',
             $sdt = $_POST['sdt'];
         }
         if (!empty($_POST['quyen'])) {
-            $quyen = implode(',', $_POST['quyen']);
+            $quyen = $_POST['quyen'];
         }
         if (isset($error)) {
             $query = "insert into users(username, password, hoten ,diachi , email, sdt, ngaytao, quyen) values('$tendn', '$matkhau', '$hoten', '$diachi', '$email', '$sdt', now(), '$quyen')";
@@ -97,9 +97,9 @@ if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('1',
                 </div>
                 <div class="control-group">
                     <label class="control-label tieude">Quyền:</label>
-                    <input type="checkbox" name="quyen[]" value="1">Admin
-                    <input type="checkbox" name="quyen[]" value="2">Giao viên
-                    <input type="checkbox" name="quyen[]" value="3">Thanh tra
+                    <input type="radio" name="quyen" value="1">Admin
+                    <input type="radio" name="quyen" value="2">Giao viên
+                    <input type="radio" name="quyen" value="3">Thanh tra
                 </div>
                 <button type="submit" class="btn btn-success">Lưu</button>
         </form>

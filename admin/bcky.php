@@ -14,6 +14,7 @@ if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('2',
         <div><a href="index.php?page=addbcky" class="btn btn-success">
                 Thêm mới báo cáo
             </a></div>
+            <hr>
         <table class="table table-hover">
             <thead>
             <tr>

@@ -5,7 +5,7 @@
  * Date: 27/05/2018
  * Time: 3:37 CH
  */
-if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('2', $_SESSION['quyen'])) {
+if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && (in_array('1', $_SESSION['quyen'])||in_array('2', $_SESSION['quyen'])||in_array('3', $_SESSION['quyen']))) {
   
 ?>
 

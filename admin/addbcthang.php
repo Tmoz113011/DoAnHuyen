@@ -88,7 +88,7 @@ $save = $db->exec($query);
                                     <label for=""> Tháng:</label>
                                     <select name="thang" class="form-control" id="" required="">
                                         <?php for ($i = 1; $i <= 12; $i++) { ?>
-                                            <option value="<?php echo $i ?>">
+                                            <option value="<?php echo $i ?>"  <?php echo (@$val[3]==$i)?'selected':'' ?>>
                                                 Tháng <?php echo $i ?>
                                             </option>
                                         <?php } ?>
@@ -100,7 +100,7 @@ $save = $db->exec($query);
                                     <label for=""> Kỳ:</label>
                                     <select name="ki" class="form-control" id="" required="">
                                         <?php for ($i = 1; $i <= 10; $i++) { ?>
-                                            <option value="<?php echo $i ?>">
+                                            <option value="<?php echo $i ?>" <?php echo (@$val[4]==$i)?'selected':'' ?>>
                                                 Kì <?php echo $i ?>
                                             </option>
                                         <?php } ?>
@@ -141,7 +141,7 @@ $save = $db->exec($query);
                                     <div class="col-sm-4">3.1 Sinh viên đi học muộn, học hộ:</div>
                                     <div class="col-sm-8">
                                         <input name="di_muon_hoc_ho" type="radio" class="" value="1" required="" <?php echo (!empty($val['di_muon_hoc_ho'])&&$val['di_muon_hoc_ho']==1)?'checked':'' ?>> <span>Có</span>
-                                        <input name="di_muon_hoc_ho" type="radio" class="" value="0" required="" <?php echo (!empty($val['di_muon_hoc_ho'])&&$val['di_muon_hoc_ho']==0)?'checked':'' ?>>
+                                        <input name="di_muon_hoc_ho" type="radio" class="" value="0" required="" <?php echo (isset($val['di_muon_hoc_ho'])&&$val['di_muon_hoc_ho']==0)?'checked':'' ?>>
                                         <span>Không</span>
                                     </div>
                                 </div>
@@ -150,7 +150,7 @@ $save = $db->exec($query);
                                     <div class="col-sm-4">3.2 100% sinh viên đeo thẻ khi vào lớp:</div>
                                     <div class="col-sm-8">
                                         <input name="deo_the" type="radio" class="" value="1" required="" <?php echo (!empty($val['deo_the'])&&$val['deo_the']==1)?'checked':'' ?>> <span>Đạt</span>
-                                        <input name="deo_the" type="radio" class="" value="0" required="" <?php echo (!empty($val['deo_the'])&&$val['deo_the']==0)?'checked':'' ?>>
+                                        <input name="deo_the" type="radio" class="" value="0" required="" <?php echo (isset($val['deo_the'])&&$val['deo_the']==0)?'checked':'' ?>>
                                         <span>Không đạt</span>
                                     </div>
                                 </div>
@@ -159,7 +159,7 @@ $save = $db->exec($query);
                                     <div class="col-sm-4">3.3 Sinh viên ngủ gật trong lớp:</div>
                                     <div class="col-sm-8">
                                         <input name="ngu_gat" type="radio" class="" value="1" required="" <?php echo (!empty($val[9])&&$val[9]==1)?'checked':'' ?>> <span>Có</span>
-                                        <input name="ngu_gat" type="radio" class="" value="0" required="" <?php echo (!empty($val[0])&&$val[9]==0)?'checked':'' ?>>
+                                        <input name="ngu_gat" type="radio" class="" value="0" required="" <?php echo (isset($val[9])&&$val[9]==0)?'checked':'' ?>>
                                         <span>Không</span>
                                     </div>
                                 </div>

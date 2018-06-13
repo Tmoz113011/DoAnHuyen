@@ -5,7 +5,7 @@
  * Date: 27/05/2018
  * Time: 3:24 CH
  */
-if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('2', $_SESSION['quyen'])) {
+if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && (in_array('1', $_SESSION['quyen'])||in_array('2', $_SESSION['quyen'])||in_array('3', $_SESSION['quyen']))) {
     ?>
 <?php 
 if (!empty($_GET['id'])) {
@@ -42,30 +42,29 @@ if (!empty($_GET['id'])) {
                             </div>
                         </div>
                         <div class="col-sm-3">
-                            <div class="form-group">
-                                <label for=""> Tháng:</label>
-                                <select name="thang" class="form-control" id="" disabled>
-                                    <?php for ($i = 1; $i <= 12; $i++) { ?>
-                                        <option value="<?php echo $i ?>">
-                                            Tháng <?php echo $i ?>
-                                        </option>
-                                    <?php } ?>
-                                </select>
+                                <div class="form-group">
+                                    <label for=""> Tháng:</label>
+                                    <select name="thang" class="form-control" id="" disabled="">
+                                        <?php for ($i = 1; $i <= 12; $i++) { ?>
+                                            <option value="<?php echo $i ?>" <?php echo (@$val[2]==$i)?'selected':'' ?>>
+                                                Tháng <?php echo $i ?>
+                                            </option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
                         <div class="col-sm-3">
-                            <div class="form-group">
-                                <label for=""> Năm học:</label>
-                                <select name="nam_hoc" class="form-control" id="" disabled>
-                                    <option value="1">
-                                        2017-2018
-                                    </option>
-                                    <option value="2">
-                                        2018-2019
-                                    </option>
-                                </select>
+                                <div class="form-group">
+                                    <label for=""> Năm học:</label>
+                                    <select name="nam_hoc" class="form-control" id="" disabled="">
+                                        <?php for ($i = 2000; $i <= 2030; $i++) { ?>
+                                        <option value="<?php echo $i.'-'.($i+1); ?>" <?php echo (@$val[3]==$i.'-'.($i+1))?'selected':'' ?>>
+                                            <?php echo $i.'-'.($i+1); ?>
+                                        </option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
                     </div>
                     <hr>
                     <div class="row">

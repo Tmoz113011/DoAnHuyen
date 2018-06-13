@@ -25,7 +25,7 @@ $query = "UPDATE `dky_sinhhoat` SET `thang`=$thang,`nam_hoc`='$nam_hoc',`dia_die
 }
 else
 {
-$query = "INSERT INTO `dky_sinhhoat`(`id_lop`, `thang`, `nam_hoc`, `dia_diem`, `thanh_phan`, `noi_dung`, `thoi_gian`) VALUES (".$_SESSION['lop']['id'].", $thang, '$nam_hoc', '$dia_diem', '$thanh_phan', '$noi_dung', '$thoi_gian')";
+$query = "INSERT INTO `dky_sinhhoat`(`id_lop`, `thang`, `nam_hoc`, `dia_diem`, `thanh_phan`, `noi_dung`, `thoi_gian`, `trang_thai`) VALUES (".$_SESSION['lop']['id'].", $thang, '$nam_hoc', '$dia_diem', '$thanh_phan', '$noi_dung', '$thoi_gian', 0)";
 }
 $save = $db->exec($query);
 header('location:index.php?page=ds_dkshl');
@@ -60,29 +60,29 @@ header('location:index.php?page=ds_dkshl');
                             </div>
                         </div>
                         <div class="col-sm-3">
-                            <div class="form-group">
-                                <label for=""> Tháng:</label>
-                                <select name="thang" class="form-control" id="" required="">
-                                    <?php for ($i = 1; $i <= 12; $i++) { ?>
-                                        <option value="<?php echo $i ?>">
-                                            Tháng <?php echo $i ?>
-                                        </option>
-                                    <?php } ?>
-                                </select>
+                                <div class="form-group">
+                                    <label for=""> Tháng:</label>
+                                    <select name="thang" class="form-control" id="" required="">
+                                        <?php for ($i = 1; $i <= 12; $i++) { ?>
+                                            <option value="<?php echo $i ?>" <?php echo (@$val[2]==$i)?'selected':'' ?>>
+                                                Tháng <?php echo $i ?>
+                                            </option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
                         <div class="col-sm-3">
-                            <div class="form-group">
-                                <label for=""> Năm học:</label>
-                                <select name="nam_hoc" class="form-control" id="" required="">
-                                    <?php for ($i = 2000; $i <= 2030; $i++) { ?>
-                                        <option value="<?php echo $i.'-'.($i+1); ?>">
+                                <div class="form-group">
+                                    <label for=""> Năm học:</label>
+                                    <select name="nam_hoc" class="form-control" id="" required="">
+                                        <?php for ($i = 2000; $i <= 2030; $i++) { ?>
+                                        <option value="<?php echo $i.'-'.($i+1); ?>" <?php echo (@$val[3]==$i.'-'.($i+1))?'selected':'' ?>>
                                             <?php echo $i.'-'.($i+1); ?>
                                         </option>
-                                    <?php } ?>
-                                </select>
+                                        <?php } ?>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
                     </div>
                     <hr>
                     <div class="row">

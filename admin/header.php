@@ -27,10 +27,10 @@ if (!isset($_SESSION['login_us'])) {
                     if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('1', $_SESSION['quyen'])) { ?>
                         <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "qlkhoa") ? "active" : "" ?>"><a
                                     href="index.php?page=qlkhoa"><i class="fa fa-list-alt"></i> Quản lý khoa</a></li>
-                        <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "qlnganh") ? "active" : "" ?>">
+<!--                         <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "qlnganh") ? "active" : "" ?>">
                             <a
                                     href="index.php?page=qlnganh"><i class="fa fa-list-alt"></i> Quản lý ngành</a></li>
-                        <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "qllop") ? "active" : "" ?>"><a
+ -->                        <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "qllop") ? "active" : "" ?>"><a
                                     href="index.php?page=qllop"><i class="fa fa-list-alt"></i> Quản lý lớp</a></li>
                         <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "qlkhoahoc") ? "active" : "" ?>">
                             <a
@@ -42,9 +42,9 @@ if (!isset($_SESSION['login_us'])) {
                                     href="index.php?page=baocaoky"><i class="fa fa-list-alt"></i> Báo cáo theo kỳ</a></li>
                         <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "dangkysh") ? "active" : "" ?>"><a
                                     href="index.php?page=dangkysh"><i class="fa fa-list-alt"></i> Danh sách đăng kí sinh hoạt lớp</a></li>
-                        <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "danhgia") ? "active" : "" ?>"><a
-                                    href="index.php?page=danhgia"><i class="fa fa-list-alt"></i> Đánh giá xấp loại</a></li>
-                        <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "xlcanbo") ? "active" : "" ?>"><a
+<!--                         <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "danhgia") ? "active" : "" ?>"><a
+                                    href="index.php?page=danhgia"><i class="fa fa-list-alt"></i> Đánh giá xếp loại</a></li>
+ -->                        <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "xlcanbo") ? "active" : "" ?>"><a
                                     href="index.php?page=xlcanbo"><i class="fa fa-list-alt"></i> Xếp loại cán bộ lớp</a></li>
                         <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "nguoidung") ? "active" : "" ?>">
                             <a
@@ -76,31 +76,19 @@ if (!isset($_SESSION['login_us'])) {
                         <?php
                     } //thanhtra
                     elseif ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('3', $_SESSION['quyen'])) {
-                        if (isset($_REQUEST['page'])) {
-
-                        }
+                        ?>
+                        <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "baocaothang") ? "active" : "" ?>"><a
+                                    href="index.php?page=baocaothang"><i class="fa fa-list-alt"></i> Báo cáo theo tháng</a></li>
+                        <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "baocaoky") ? "active" : "" ?>"><a
+                                    href="index.php?page=baocaoky"><i class="fa fa-list-alt"></i> Báo cáo theo kỳ</a></li>
+                        <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "dangkysh") ? "active" : "" ?>"><a
+                                    href="index.php?page=dangkysh"><i class="fa fa-list-alt"></i> Danh sách đăng kí sinh hoạt lớp</a></li>
+                        <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "xlcanbo") ? "active" : "" ?>"><a
+                                    href="index.php?page=xlcanbo"><i class="fa fa-list-alt"></i> Xếp loại cán bộ lớp</a></li>
+                        <?php
                     }
                 }
                 ?>
-
-                <!--                <li class="active"><a href="index.html"><i class="fa fa-dashboard"></i> Dashboard</a></li>-->
-                <!--                <li><a href="charts.html"><i class="fa fa-bar-chart-o"></i> Charts</a></li>-->
-                <!--                <li><a href="tables.html"><i class="fa fa-table"></i> Tables</a></li>-->
-                <!--                <li><a href="forms.html"><i class="fa fa-edit"></i> Forms</a></li>-->
-                <!--                <li><a href="typography.html"><i class="fa fa-font"></i> Typography</a></li>-->
-                <!--                <li><a href="bootstrap-elements.html"><i class="fa fa-desktop"></i> Bootstrap Elements</a></li>-->
-                <!--                <li><a href="bootstrap-grid.html"><i class="fa fa-wrench"></i> Bootstrap Grid</a></li>-->
-                <!--                <li><a href="blank-page.html"><i class="fa fa-file"></i> Blank Page</a></li>-->
-                <!--                <li class="dropdown">-->
-                <!--                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i>-->
-                <!--                        Dropdown <b class="caret"></b></a>-->
-                <!--                    <ul class="dropdown-menu">-->
-                <!--                        <li><a href="#">Dropdown Item</a></li>-->
-                <!--                        <li><a href="#">Another Item</a></li>-->
-                <!--                        <li><a href="#">Third Item</a></li>-->
-                <!--                        <li><a href="#">Last Item</a></li>-->
-                <!--                    </ul>-->
-                <!--                </li>-->
             </ul>
             <ul class="nav navbar-nav navbar-right navbar-user">
                 <li>

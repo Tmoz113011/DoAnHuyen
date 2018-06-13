@@ -48,6 +48,9 @@ include __DIR__ . '/header.php';
                         case "ctdkshl":
                             include "ctdkshl.php";
                             break;
+                        case "pheduyet":
+                            include "pheduyet.php";
+                            break;
                         case 'ctbcthang';
                             include "ctbcthang.php";
                             break;
@@ -141,6 +144,15 @@ include __DIR__ . '/header.php';
                 if (isset($_REQUEST['page'])) {
                     $page = $_REQUEST['page'];
                     switch ($page) {
+                        case "del_bcthang":
+                            include "del_bcthang.php";
+                            break;
+                        case "del_bcky":
+                            include "del_bcky.php";
+                            break;
+                        case "del_dkshl":
+                            include "del_dkshl.php";
+                            break;
                         case "ctdkshl":
                             include "ctdkshl.php";
                             break;
@@ -192,7 +204,36 @@ include __DIR__ . '/header.php';
                 if (isset($_REQUEST['page'])) {
                     $page = $_REQUEST['page'];
                     switch ($page) {
-
+                        case "ctdkshl":
+                            include "ctdkshl.php";
+                            break;
+                        case "pheduyet":
+                            include "pheduyet.php";
+                            break;
+                        case 'ctbcthang';
+                            include "ctbcthang.php";
+                            break;
+                        case 'ctbcky';
+                            include "ctbcky.php";
+                            break;
+                        case "qlkhoa":
+                            include "qlkhoa.php";
+                            break;
+                        case "baocaothang":
+                            include "baocaothang.php";
+                            break;
+                        case "baocaoky":
+                            include "baocaoky.php";
+                            break;
+                        case "dangkysh":
+                            include "dangkysh.php";
+                            break;
+                        case "danhgia":
+                            include "danhgia.php";
+                            break;
+                        case "xlcanbo":
+                            include "xlcanbo.php";
+                            break;
                         case 'logout';
                             include "logout.php";
                             break;
