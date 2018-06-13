@@ -39,8 +39,32 @@ include __DIR__ . '/header.php';
                 if (isset($_REQUEST['page'])) {
                     $page = $_REQUEST['page'];
                     switch ($page) {
+                        case "ctdkshl":
+                            include "ctdkshl.php";
+                            break;
+                        case 'ctbcthang';
+                            include "ctbcthang.php";
+                            break;
+                        case 'ctbcky';
+                            include "ctbcky.php";
+                            break;
                         case "qlkhoa":
                             include "qlkhoa.php";
+                            break;
+                        case "baocaothang":
+                            include "baocaothang.php";
+                            break;
+                        case "baocaoky":
+                            include "baocaoky.php";
+                            break;
+                        case "dangkysh":
+                            include "dangkysh.php";
+                            break;
+                        case "danhgia":
+                            include "danhgia.php";
+                            break;
+                        case "xlcanbo":
+                            include "xlcanbo.php";
                             break;
                         case "qlnganh":
                             include "qlnganh.php";
@@ -109,6 +133,9 @@ include __DIR__ . '/header.php';
                 if (isset($_REQUEST['page'])) {
                     $page = $_REQUEST['page'];
                     switch ($page) {
+                        case "ctdkshl":
+                            include "ctdkshl.php";
+                            break;
                         case 'bcthang';
                             include "bcthang.php";
                             break;

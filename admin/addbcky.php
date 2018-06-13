@@ -66,9 +66,9 @@ $save = $db->exec($query);
                                     $row_lop = $db->query($queryLop);
                                     ?>
                                     <select name="lop" class="form-control" id="" disabled="">
-                                        <?php foreach ($row_lop as $value) { ?>
-                                            <option value="<?php echo $value['id'] ?>">
-                                                <?php echo $value['malop'] ?>
+                                        <?php foreach ($row_lop as $val) { ?>
+                                            <option value="<?php echo $val['id'] ?>">
+                                                <?php echo $val['malop'] ?>
                                             </option>
                                         <?php } ?>
                                     </select>
@@ -78,12 +78,11 @@ $save = $db->exec($query);
                                 <div class="form-group">
                                     <label for=""> Kỳ:</label>
                                     <select name="ki" class="form-control" id="" required="">
-                                        <option value="1">
-                                            Kỳ I
-                                        </option>
-                                        <option value="2">
-                                            Kỳ II
-                                        </option>
+                                        <?php for ($i = 1; $i <= 10; $i++) { ?>
+                                            <option value="<?php echo $i ?>" <?php echo (@$value[2]==$i)?'selected':'' ?>>
+                                                Kì <?php echo $i ?>
+                                            </option>
+                                        <?php } ?>
                                     </select>
                                 </div>
                             </div>
@@ -91,12 +90,11 @@ $save = $db->exec($query);
                                 <div class="form-group">
                                     <label for=""> Năm học:</label>
                                     <select name="nam_hoc" class="form-control" id="" required="">
-                                        <option value="1">
-                                            2017-2018
+                                        <?php for ($i = 2000; $i <= 2030; $i++) { ?>
+                                        <option value="<?php echo $i.'-'.($i+1); ?>" <?php echo (@$value[3]==$i.'-'.($i+1))?'selected':'' ?>>
+                                            <?php echo $i.'-'.($i+1); ?>
                                         </option>
-                                        <option value="2">
-                                            2018-2019
-                                        </option>
+                                        <?php } ?>
                                     </select>
                                 </div>
                             </div>
@@ -163,21 +161,21 @@ $save = $db->exec($query);
                         <div>
                             <p class="blue"><b>3. Hoạt động phong trào</b></p>
                             <div class="form-group">
-                                <input type="checkbox" name="tapthe_tt_xs" value="<?php echo @$value[11] ?>">
+                                <input type="checkbox" name="tapthe_tt_xs" value="<?php echo @$value[11] ?>" <?php echo (@$value[11]==1)?'checked':'' ?>>
                                 <label for=""> Tập thể lớp đạt tiên tiến, xuất sắc</label>
                             </div>
                             <div class="form-group">
-                                <input type="checkbox" name="dat_giai" value="<?php echo @$value[12] ?>">
+                                <input type="checkbox" name="dat_giai" value="<?php echo @$value[12] ?>"  <?php echo (@$value[12]==1)?'checked':'' ?>>
                                 <label for=""> Lớp có sinh viên đạt giải thi sinh viên giỏi, Olympic, văn hóa, văn
                                     nghệ, thể thao từ Cấp Trường trở lên</label>
                             </div>
                             <div class="form-group">
-                                <input type="checkbox" name="thamgia_hd" value="<?php echo @$value[13] ?>">
+                                <input type="checkbox" name="thamgia_hd" value="<?php echo @$value[13] ?>" <?php echo (@$value[13]==1)?'checked':'' ?>>
                                 <label for=""> Lớp có nhiều sinh viên tham gia các hoạt dộng vì cộng đồng (tình
                                     nguyện, hiến máu nhân đạo, tự quản...)</label>
                             </div>
                             <div class="form-group">
-                                <input type="checkbox" name=duoc_knapdang" value="<?php echo @$value[14] ?>">
+                                <input type="checkbox" name=duoc_knapdang" value="<?php echo @$value[14] ?>" <?php echo (@$value[14]==1)?'checked':'' ?>>
                                 <label for=""> Lớp có sinh viên được kết nạp Đảng trong kỳ</label>
                             </div>
 
@@ -195,10 +193,10 @@ $save = $db->exec($query);
                                     <div class="col-sm-2">Xếp loại:</div>
                                     <div class="col-sm-3">
                                         <select name="xl_lt" id="" class="form-control" required="">
-                                            <option value="1" <?php echo (!empty($value[16])&&$value[16]=1)?'selected':'' ?>>A</option>
-                                            <option value="2" <?php echo (!empty($value[16])&&$value[16]=2)?'selected':'' ?>>B</option>
-                                            <option value="3" <?php echo (!empty($value[16])&&$value[16]=3)?'selected':'' ?>>C</option>
-                                            <option value="4" <?php echo (!empty($value[16])&&$value[16]=4)?'selected':'' ?>>D</option>
+                                            <option value="1" <?php echo (!empty($value[16])&&$value[16]==1)?'selected':'' ?>>A</option>
+                                            <option value="2" <?php echo (!empty($value[16])&&$value[16]==2)?'selected':'' ?>>B</option>
+                                            <option value="3" <?php echo (!empty($value[16])&&$value[16]==3)?'selected':'' ?>>C</option>
+                                            <option value="4" <?php echo (!empty($value[16])&&$value[16]==4)?'selected':'' ?>>D</option>
                                         </select>
                                     </div>
                                 </div>
@@ -213,10 +211,10 @@ $save = $db->exec($query);
                                     <div class="col-sm-2">Xếp loại:</div>
                                     <div class="col-sm-3">
                                         <select name="xl_lp_ht" id="" class="form-control" required="">
-                                            <option value="1" <?php echo (!empty($value[18])&&$value[18]=1)?'selected':'' ?>>A</option>
-                                            <option value="2" <?php echo (!empty($value[18])&&$value[18]=2)?'selected':'' ?>>B</option>
-                                            <option value="3" <?php echo (!empty($value[18])&&$value[18]=3)?'selected':'' ?>>C</option>
-                                            <option value="4" <?php echo (!empty($value[18])&&$value[18]=4)?'selected':'' ?>>D</option>
+                                            <option value="1" <?php echo (!empty($value[18])&&$value[18]==1)?'selected':'' ?>>A</option>
+                                            <option value="2" <?php echo (!empty($value[18])&&$value[18]==2)?'selected':'' ?>>B</option>
+                                            <option value="3" <?php echo (!empty($value[18])&&$value[18]==3)?'selected':'' ?>>C</option>
+                                            <option value="4" <?php echo (!empty($value[18])&&$value[18]==4)?'selected':'' ?>>D</option>
                                         </select>
                                     </div>
                                 </div>
@@ -231,10 +229,10 @@ $save = $db->exec($query);
                                     <div class="col-sm-2">Xếp loại:</div>
                                     <div class="col-sm-3">
                                         <select name="xl_lp_ds" id="" class="form-control" required="">
-                                            <option value="1" <?php echo (!empty($value[20])&&$value[20]=1)?'selected':'' ?>>A</option>
-                                            <option value="2" <?php echo (!empty($value[20])&&$value[20]=2)?'selected':'' ?>>B</option>
-                                            <option value="3" <?php echo (!empty($value[20])&&$value[20]=3)?'selected':'' ?>>C</option>
-                                            <option value="4" <?php echo (!empty($value[20])&&$value[20]=4)?'selected':'' ?>>D</option>
+                                            <option value="1" <?php echo (!empty($value[20])&&$value[20]==1)?'selected':'' ?>>A</option>
+                                            <option value="2" <?php echo (!empty($value[20])&&$value[20]==2)?'selected':'' ?>>B</option>
+                                            <option value="3" <?php echo (!empty($value[20])&&$value[20]==3)?'selected':'' ?>>C</option>
+                                            <option value="4" <?php echo (!empty($value[20])&&$value[20]==4)?'selected':'' ?>>D</option>
                                         </select>
                                     </div>
                                 </div>

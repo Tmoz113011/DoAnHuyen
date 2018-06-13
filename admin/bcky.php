@@ -27,7 +27,7 @@ if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('2',
             </thead>
             <tbody>
             <?php 
-            $query = "SELECT khoa.tenkhoa,lop.malop,bc_ky.ki,bc_ky.nam_hoc,bc_ky.id FROM bc_ky join lop on lop.id=bc_ky.id_lop join khoa on lop.id_khoa=khoa.id";
+            $query = "SELECT khoa.tenkhoa,lop.malop,bc_ky.ki,bc_ky.nam_hoc,bc_ky.id FROM bc_ky join lop on lop.id=bc_ky.id_lop join khoa on lop.id_khoa=khoa.id where lop.id=".$_SESSION['lop']['id'];
             $rows = $db -> query($query);
             $i = 0;
             foreach ($rows as $key => $value) { 
@@ -41,9 +41,9 @@ if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('2',
                 <td><?php echo $value['3'] ?></td>
                 
                 <td>
-                    <a href="index.php?page=ctbcky" class="btn btn-primary"><i class="fa fa-eye"></i></a>
+                    <a href="index.php?page=ctbcky&id=<?php echo $value['4'] ?>" class="btn btn-primary"><i class="fa fa-eye"></i></a>
                     <a href="index.php?page=addbcky&id=<?php echo $value['4'] ?>" class="btn btn-success"><i class="fa fa-edit"></i></a>
-                    <a href="" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
+                    <a href="index.php?page=del_bcky&id=<?php echo $value['4'] ?>" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
                 </td>
             </tr>
         <?php } ?>

@@ -36,8 +36,16 @@ if (!isset($_SESSION['login_us'])) {
                             <a
                                     href="index.php?page=qlkhoahoc"><i class="fa fa-list-alt"></i> Quản lý khóa học</a>
                         </li>
-                        <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "baocao") ? "active" : "" ?>"><a
-                                    href="index.php?page=baocao"><i class="fa fa-list-alt"></i> Báo cáo</a></li>
+                        <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "baocaothang") ? "active" : "" ?>"><a
+                                    href="index.php?page=baocaothang"><i class="fa fa-list-alt"></i> Báo cáo theo tháng</a></li>
+                        <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "baocaoky") ? "active" : "" ?>"><a
+                                    href="index.php?page=baocaoky"><i class="fa fa-list-alt"></i> Báo cáo theo kỳ</a></li>
+                        <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "dangkysh") ? "active" : "" ?>"><a
+                                    href="index.php?page=dangkysh"><i class="fa fa-list-alt"></i> Danh sách đăng kí sinh hoạt lớp</a></li>
+                        <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "danhgia") ? "active" : "" ?>"><a
+                                    href="index.php?page=danhgia"><i class="fa fa-list-alt"></i> Đánh giá xấp loại</a></li>
+                        <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "xlcanbo") ? "active" : "" ?>"><a
+                                    href="index.php?page=xlcanbo"><i class="fa fa-list-alt"></i> Xếp loại cán bộ lớp</a></li>
                         <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "nguoidung") ? "active" : "" ?>">
                             <a
                                     href="index.php?page=nguoidung"><i class="fa fa-users"></i> Quản lý người
