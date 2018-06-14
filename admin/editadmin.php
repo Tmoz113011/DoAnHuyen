@@ -39,10 +39,21 @@ if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('1',
             $sdt = $_POST['sdt'];
         }
         if (!empty($_POST['quyen'])) {
-            $quyen = implode(',', $_POST['quyen']);
+            $quyen = $_POST['quyen'];
         }
+        switch ($quyen) {
+                case '1':
         $query = "update users set hoten='$hoten', diachi='$diachi', email='$email', sdt='$sdt', quyen='$quyen' where id=" . (int)$_POST['ma'];
-//Thuc thi cau truy van
+                    break;
+                
+                case '3':
+        $query = "update thanhtra set hoten='$hoten', diachi='$diachi', email='$email', sdt='$sdt', quyen='$quyen' where id=" . (int)$_POST['ma'];
+                    break;
+                
+                default:
+                    $query='';
+                    break;
+            }
         $count = $db->exec($query);
         if ($count > 0) {
             echo "<script>"

@@ -50,6 +50,9 @@ if (!isset($_SESSION['login_us'])) {
                             <a
                                     href="index.php?page=nguoidung"><i class="fa fa-users"></i> Quản lý người
                                 dùng</a></li>
+                                 <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "qlgiangvien") ? "active" : "" ?>">
+                            <a
+                                    href="index.php?page=qlgiangvien"><i class="fa fa-users"></i> Quản lý giảng viên</a></li>
                         <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "logout") ? "active" : "" ?>"><a
                                     href="index.php?page=logout"><i class="fa fa-power-off"></i> Thoát </a>
                         </li>

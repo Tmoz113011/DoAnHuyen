@@ -7,9 +7,10 @@ if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('1',
     if (!empty($_REQUEST['submit'])) {
         $makhoahoc = $_REQUEST['makhoahoc'];
         $tenkhoahoc = $_REQUEST['tenkhoahoc'];
+        $thoigian = $_REQUEST['thoigian'];
         $id = $_REQUEST['id'];
         if ($id == '') {
-            $sql = "INSERT INTO `khoahoc`(`id`, `makhoahoc`, `tenkhoahoc`) VALUES (NULL, '$makhoahoc', '$tenkhoahoc')";
+            $sql = "INSERT INTO `khoahoc`(`id`, `makhoahoc`, `tenkhoahoc` , `thoigian`) VALUES (NULL, '$makhoahoc', '$tenkhoahoc')";
             $rowss = $db->query($sql);
             header("location:index.php?page=qlkhoahoc&mess=1");
         } else {
@@ -65,6 +66,12 @@ if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('1',
                 <input type="text" class="form-control" name="tenkhoahoc" id='tenkhoahoc' value="" required="">
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-5">
+                <label>Thời gian:</label>
+                <input type="text" class="form-control" placeholder="VD: 2017-2022" name="thoigian" id='thoigian' value="" required="">
+            </div>
+        </div>
         <br>
         <div class="row">
             <div class="col-md-5">
@@ -97,7 +104,7 @@ if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('1',
                     <td><?php echo $value['makhoahoc'] ?></td>
                     <td><?php echo $value['tenkhoahoc'] ?></td>
                     <td><a href="javascript:void(0)" class="btn btn-success"
-                           onclick="edit('<?php echo $value['id'] ?>','<?php echo $value['tenkhoahoc'] ?>','<?php echo $value['makhoahoc'] ?>')"
+                           onclick="edit('<?php echo $value['id'] ?>','<?php echo $value['tenkhoahoc'] ?>','<?php echo $value['makhoahoc'] ?>','<?php echo $value['thoigian'] ?>')"
                            title=""><i class="fa fa-edit"></i></a> <a
                                 href="index.php?page=xoakhoahoc&id=<?php echo $value['id'] ?>" class="btn btn-danger"
                                 onclick="return confirm('Bạn có chắc chắn muốn xóa không ?')"
@@ -112,9 +119,10 @@ if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('1',
     </table>
 </div>
 <script>
-    function edit(id, name, makhoahoc) {
+    function edit(id, name, makhoahoc,thoigian) {
         document.getElementById('id').value = id
         document.getElementById('tenkhoahoc').value = name
+        document.getElementById('thoigian').value = thoigian
         document.getElementById('makhoahoc').value = makhoahoc
     }
 </script>

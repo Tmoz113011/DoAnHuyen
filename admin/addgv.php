@@ -27,23 +27,11 @@ if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('1',
         if (!empty($_POST['sdt'])) {
             $sdt = $_POST['sdt'];
         }
-        if (!empty($_POST['quyen'])) {
-            $quyen = $_POST['quyen'];
-        }
-        if (isset($error)) {
-            switch ($quyen) {
-                case '1':
-                    $query = "insert into users(username, password, hoten ,diachi , email, sdt, ngaytao, quyen) values('$tendn', '$matkhau', '$hoten', '$diachi', '$email', '$sdt', now(), '$quyen')";
-                    break;
-                
-                case '3':
-                    $query = "insert into thanhtra(username, password, hoten ,diachi , email, sdt, ngaytao, quyen) values('$tendn', '$matkhau', '$hoten', '$diachi', '$email', '$sdt', now(), '$quyen')";
-                    break;
-                
-                default:
-                    $query='';
-                    break;
-            }
+        $chucvu = $_POST['chucvu'];
+        $hocvi = $_POST['hocvi'];
+        $noicongtac = $_POST['noicongtac'];
+        $query = "insert into giangvien(username, password, hoten ,diachi , email, sdt, ngaytao, quyen, chucvu, hocvi, noicongtac) values('$tendn', '$matkhau', '$hoten', '$diachi', '$email', '$sdt', now(), 2)";
+                   
             
             $count = $db->exec($query);
             if ($count > 0) {
@@ -56,10 +44,7 @@ if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('1',
             } else {
                 echo "<script>alert('Tạo tài khoản thất bại')</script>";
             }
-        } else {
-            echo "<script>alert('Đăng ký thất bại')</script>";
-        }
-    }
+        } 
 } else {
     header("location:index.php");
 }
@@ -71,7 +56,7 @@ if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('1',
     </div>
     <div class="span9">
         <form action="" method="post">
-            <fieldset>
+            <fieldset class="col-md-9">
                 <div class="control-group">
                     <label class="control-label tieude">Tên đăng nhập:</label>
                     <div class="controls">
@@ -109,9 +94,22 @@ if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('1',
                     </div>
                 </div>
                 <div class="control-group">
-                    <label class="control-label tieude">Quyền:</label>
-                    <input type="radio" name="quyen" value="1">Admin
-                    <input type="radio" name="quyen" value="3">Thanh tra
+                    <label class="control-label tieude">Chức vụ</label>
+                    <div class="controls">
+                        <input type="text" class="form-control" name="chucvu" required="">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label tieude">Học vị</label>
+                    <div class="controls">
+                        <input type="text" class="form-control" name="hocvi" required="">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label tieude">Nơi công tác</label>
+                    <div class="controls">
+                        <input type="text" class="form-control" name="noicongtac" required="">
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-success">Lưu</button>
         </form>

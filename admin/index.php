@@ -48,6 +48,18 @@ include __DIR__ . '/header.php';
                         case "ctdkshl":
                             include "ctdkshl.php";
                             break;
+                        case "qlgiangvien":
+                            include "qlgiangvien.php";
+                            break;
+                        case "addgv":
+                            include "addgv.php";
+                            break;
+                        case "suagv":
+                            include "suagv.php";
+                            break;
+                        case "xoagv":
+                            include "xoagv.php";
+                            break;
                         case "pheduyet":
                             include "pheduyet.php";
                             break;
