@@ -84,6 +84,10 @@ if (!isset($_SESSION['login_us'])) {
                     } //thanhtra
                     elseif ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('3', $_SESSION['quyen'])) {
                         ?>
+                        <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "qlgiangvientt") ? "active" : "" ?>"><a
+                                    href="index.php?page=qlgiangvientt"><i class="fa fa-list-alt"></i> Danh sách giảng viên</a></li>
+                        <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "qlloptt") ? "active" : "" ?>"><a
+                                    href="index.php?page=qlloptt"><i class="fa fa-list-alt"></i> Danh sách lớp</a></li>
                         <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "baocaothang") ? "active" : "" ?>"><a
                                     href="index.php?page=baocaothang"><i class="fa fa-list-alt"></i> Báo cáo theo tháng</a></li>
                         <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "baocaoky") ? "active" : "" ?>"><a

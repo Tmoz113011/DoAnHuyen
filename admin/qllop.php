@@ -1,8 +1,25 @@
 <?php
 if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('1', $_SESSION['quyen'])) {
-    $sqlgv = "SELECT `id`, `username`, `password`, `hoten`, `diachi`, `email`, `sdt`, `ngaytao`, `quyen` FROM `users` WHERE quyen LIKE '%2%'";
+    $sqlgv = "SELECT `id`, `username`, `password`, `hoten`, `diachi`, `email`, `sdt`, `ngaytao`, `quyen` FROM `giangvien` WHERE quyen=2";
     $rowgv = $db->query($sqlgv);
-    $sql = "SELECT lop.id,lop.tenlop,lop.malop,khoa.tenkhoa,khoa.id,khoahoc.id,khoahoc.tenkhoahoc,khoahoc.makhoahoc,lop.id_giaovien FROM lop join khoa on lop.id_khoa=khoa.id join khoahoc on lop.id_khoahoc=khoahoc.id";
+    $sql = "SELECT lop.id,lop.tenlop,lop.malop,khoa.tenkhoa,khoa.id,khoahoc.id,khoahoc.tenkhoahoc,khoahoc.makhoahoc,lop.id_giaovien,giangvien.hoten FROM lop join khoa on lop.id_khoa=khoa.id join khoahoc on lop.id_khoahoc=khoahoc.id leftjoin giangvien on lop.id_giaovien=giangvien.id";
+    if (!empty($_REQUEST['malop'])&&!empty($_REQUEST['tenlop'])) {
+        $sql.= " where malop LIKE '%".$_REQUEST['malop']."%' and tenlop LIKE '%".$_REQUEST['tenlop']."%'";
+    }
+    elseif (!empty($_REQUEST['malop'])) {
+        $sql.= " where malop LIKE '%".$_REQUEST['malop']."%'";
+    }
+    elseif (!empty($_REQUEST['tenlop'])) {
+        $sql.= " where tenlop LIKE '%".$_REQUEST['tenlop']."%'";
+    }
+    if (empty($_REQUEST['pagenum'])||$_REQUEST['pagenum']==1) {
+    $sql.=' limit 12';
+    }
+    else
+    {
+    $page=(($_REQUEST['pagenum']-1)*20);
+    $query.=' limit 20,'.$page;
+    }
     $rows = $db->query($sql);
     $sql1 = "SELECT * FROM khoa";
     $rows1 = $db->query($sql1);
@@ -53,7 +70,6 @@ if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('1',
             break;
     }
 </script>
-<div class="container">
     <div class="title text-center">
         <h3>Quản lý lớp</h3>
     </div>
@@ -74,7 +90,7 @@ if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('1',
         <div class="row">
             <div class="col-md-5">
                 <label>Khóa học:</label>
-                <select name="id_khoahoc" id="id_khoahoc" class="form-control">
+                <select name="id_khoahoc" id="id_khoahoc" class="form-control" required="">
                     <option value="">Chọn khóa học</option>
                     <?php foreach ($rows2 as $value) { ?>
                         <option value="<?php echo $value['id'] ?>"><?php echo $value['tenkhoahoc'] ?></option>
@@ -85,7 +101,7 @@ if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('1',
         <div class="row">
             <div class="col-md-5">
                 <label>Ngành:</label>
-                <select name="id_khoa" id="id_khoa" class="form-control">
+                <select name="id_khoa" id="id_khoa" class="form-control" required="">
                     <option value="">Chọn ngành</option>
                     <?php foreach ($rows1 as $value) { ?>
                         <option value="<?php echo $value['id'] ?>"><?php echo $value['tenkhoa'] ?></option>
@@ -96,7 +112,7 @@ if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('1',
         <div class="row">
             <div class="col-md-5">
                 <label>Giáo viên chủ nhiệm:</label>
-                <select name="id_giaovien" id="id_giaovien" class="form-control">
+                <select name="id_giaovien" id="id_giaovien" class="form-control" required="">
                     <option value="0">Chọn giáo viên</option>
                     <?php foreach ($rowgv as $value) { ?>
                         <option value="<?php echo $value['id'] ?>"><?php echo $value['hoten'] . ' - ' . $value['email'] ?></option>
@@ -112,9 +128,25 @@ if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('1',
         </div>
 
     </form>
+    <form action="" method="get" accept-charset="utf-8">
+        <input type="hidden" name="page" value="qllop">
+        <div class="row">
+            <div class="col-md-6">
+                <label>Mã lớp:</label>
+                <input type="text" class="form-control" name="malop" value="<?php echo @$_GET['malop'] ?>">
+            </div>
+            <div class="col-md-6">
+                <label>Tên lớp:</label>
+                <input type="text" class="form-control" name="tenlop" value="<?php echo @$_GET['tenlop'] ?>">
+            </div>
+            <div class="col-md-12">
+                <input type="submit" name="timkiem"  value="Tìm kiếm" class="btn btn-primary" >
+            </div>
+        </div>
+    </form>
     <br>
     <br>
-    <h3>Danh sách ngành</h3>
+    <h3>Danh sách lớp</h3>
     <table class="table table-hover">
         <thead>
         <tr>
@@ -123,15 +155,13 @@ if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('1',
             <th>Tên lớp</th>
             <th>Ngành</th>
             <th>Khóa học</th>
+            <th>Giáo viên chủ nhiệm</th>
             <th>Hành động</th>
         </tr>
         </thead>
         <tbody>
         <?php
-        $format = 'The %2$s contains %1$d monkeys';
-        $num = 5;
-        $location = 'tree';
-        echo sprintf($format, $num, $location);
+        
         if (!empty($rows)) {
             $i = 0;
             foreach ($rows as $value) {
@@ -143,6 +173,7 @@ if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('1',
                     <td><?php echo $value['tenlop'] ?></td>
                     <td><?php echo $value['tenkhoa'] ?></td>
                     <td><?php echo $value['makhoahoc'] ?></td>
+                    <td><?php echo $value['hoten'] ?></td>
                     <td><a href="javascript:void(0)" class="btn btn-success"
                            onclick="edit('<?php echo $value[0] ?>','<?php echo $value['malop'] ?>','<?php echo $value['tenlop'] ?>','<?php echo $value[4] ?>','<?php echo $value[5] ?>','<?php echo $value[8] ?>')"
                            title=""><i class="fa fa-edit"></i></a> <a
@@ -158,6 +189,36 @@ if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('1',
         </tbody>
     </table>
 </div>
+<div class="row text-center p_navigation">
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <?php
+                $q = "select count(*) from lop";
+                if (!empty($_REQUEST['malop'])&&!empty($_REQUEST['tenlop'])) {
+                    $q.= " where malop LIKE '%".$_REQUEST['malop']."%' and tenlop LIKE '%".$_REQUEST['tenlop']."%'";
+                }
+                elseif (!empty($_REQUEST['malop'])) {
+                    $q.= " where malop LIKE '%".$_REQUEST['malop']."%'";
+                }
+                elseif (!empty($_REQUEST['tenlop'])) {
+                    $q.= " where tenlop LIKE '%".$_REQUEST['tenlop']."%'";
+                }
+                                
+                     $rs = $db->query($q);
+                      $tong = $rs->fetch()[0];  
+                      $n=12;
+                      $sotrang = ceil($tong/$n);
+                      $page = (isset($_REQUEST['pagenum']))?$_REQUEST['pagenum']:1;
+                       for($k=1;$k<=$sotrang;$k++)
+                       {
+                         $active = ($page==$k)?"class='active'":'';
+                          echo "<li ".$active." ><a href='index.php?page=qlgiangvien&pagenum=".$k."&malop=".@$_GET['malop']."&tenlop=".@$_GET['tenlop']."'>$k</a></li>";
+                       }
+                ?>
+                
+            </ul>
+        </nav>
+    </div>
 <script>
     function edit(id, code, name, id_khoa, id_khoahoc, id_giaovien) {
         document.getElementById('id').value = id

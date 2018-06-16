@@ -224,6 +224,15 @@ include __DIR__ . '/header.php';
                         case "ctdkshl":
                             include "ctdkshl.php";
                             break;
+                        case "qlloptt":
+                            include "qlloptt.php";
+                            break;
+                        case "qlgiangvientt":
+                            include "qlgiangvientt.php";
+                            break;
+                        case "viewgv":
+                            include "viewgv.php";
+                            break;
                         case "pheduyet":
                             include "pheduyet.php";
                             break;

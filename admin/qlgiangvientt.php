@@ -1,8 +1,7 @@
-    <div class="title text-center">
+<div class="title text-center">
         <h3>Quản lý người dùng</h3>
     </div>
-    <a href="index.php?page=addadmin" class='btn btn-success' title="">Thêm mới</a>
-    <form action="" method="get" accept-charset="utf-8">
+<form action="" method="get" accept-charset="utf-8">
     <input type="hidden" name="page" value="qlgiangvien">
     <div class="row">
         <div class="col-md-6">
@@ -18,11 +17,11 @@
         </div>
     </div>
 </form>
-    <h3>Danh sách người dùng</h3>
+<h3>Danh sách giảng viên</h3>
 
 <?php
-if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('1', $_SESSION['quyen'])) {
-    $query = "select * from users";
+if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('3', $_SESSION['quyen'])) {
+    $query = "select * from giangvien";
     if (!empty($_REQUEST['hoten'])&&!empty($_REQUEST['email'])) {
         $query.= " where hoten LIKE '%".$_REQUEST['hoten']."%' and email LIKE '%".$_REQUEST['email']."%'";
     }
@@ -57,30 +56,28 @@ if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('1',
                 . "<td>" . $r['email'] . "</td>"
                 . "<td>" . $r['diachi'] . "</td>"
                 . "<td>" . $r['sdt'] . "</td>"
-                . "<td><a href='index.php?page=editadmin&ma=$r[0]' title='Edit'><img src='../admin/css/images/edit.png' width='18px'/></a> "
+                . "<td><a href='index.php?page=viewgv&ma=$r[0]' title='Edit' class='btn btn-primary'><i class='fa fa-eye'></i></a> "
 
-                . "<a onclick='" . $confirm . "'  href='index.php?page=deladmin&ma=$r[0]' title='Delete'><img src='../admin/css/images/delete.png'width='18px'/></a></td>"
+                . "</td>"
                 . "</tr>";
         }
     }
 
-    echo "</table>
-</div>
-";
-?>
-<div class="row text-center p_navigation">
+    echo "</table>";
+    ?>
+    <div class="row text-center p_navigation">
         <nav aria-label="Page navigation">
             <ul class="pagination">
                 <?php
-                $q = "select count(*) from users";
+                $q = "select count(*) from giangvien";
                 if (!empty($_REQUEST['hoten'])&&!empty($_REQUEST['email'])) {
-                    $q.= " where hoten LIKE '%".$_REQUEST['hoten']."%' and email LIKE '%".$_REQUEST['email']."%'";
+                    $query.= " where hoten LIKE '%".$_REQUEST['hoten']."%' and email LIKE '%".$_REQUEST['email']."%'";
                 }
                 elseif (!empty($_REQUEST['hoten'])) {
-                    $q.= " where hoten LIKE '%".$_REQUEST['hoten']."%'";
+                    $query.= " where hoten LIKE '%".$_REQUEST['hoten']."%'";
                 }
                 elseif (!empty($_REQUEST['email'])) {
-                    $q.= " where email LIKE '%".$_REQUEST['email']."%'";
+                    $query.= " where email LIKE '%".$_REQUEST['email']."%'";
                 }
                     
                      $rs = $db->query($q);
@@ -98,8 +95,9 @@ if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('1',
             </ul>
         </nav>
     </div>
-<?php
+    <?php
 } else {
     header("location:index.php");
 }
+
 ?>
