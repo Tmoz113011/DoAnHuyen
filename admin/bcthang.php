@@ -54,6 +54,4 @@ if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('2',
 
 
     </div>
-<?php } else {
-    header("location:index.php");
-} ?>
+<?php } 

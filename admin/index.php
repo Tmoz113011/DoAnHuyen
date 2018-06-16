@@ -29,7 +29,6 @@ ob_start();
 <body>
 <?php
 include __DIR__ . '/header.php';
-
 ?>
 <div class="container-fluid">
     <div class="row">
@@ -38,7 +37,7 @@ include __DIR__ . '/header.php';
             include __DIR__ . "/connect.php";
             ?>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-12">
             <?php
             //admin
             if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('1', $_SESSION['quyen'])) {
@@ -156,6 +155,12 @@ include __DIR__ . '/header.php';
                 if (isset($_REQUEST['page'])) {
                     $page = $_REQUEST['page'];
                     switch ($page) {
+                        case "ds_bc_lt":
+                            include "ds_bc_lt.php";
+                            break;
+                        case "xem_bc_lt":
+                            include "xem_bc_lt.php";
+                            break;
                         case "del_bcthang":
                             include "del_bcthang.php";
                             break;
@@ -245,6 +250,25 @@ include __DIR__ . '/header.php';
                             break;
                         case "xlcanbo":
                             include "xlcanbo.php";
+                            break;
+                        case 'logout';
+                            include "logout.php";
+                            break;
+                        default:
+                            include "home.php";
+                            break;
+
+                    }
+
+                } else include "home.php";
+            }
+            elseif ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('4', $_SESSION['quyen'])) {
+                if (isset($_REQUEST['page'])) {
+                    $page = $_REQUEST['page'];
+                    switch ($page) {
+                        
+                        case 'bcLT';
+                            include "bcLT.php";
                             break;
                         case 'logout';
                             include "logout.php";

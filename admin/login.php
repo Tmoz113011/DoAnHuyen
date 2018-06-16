@@ -109,13 +109,14 @@ include "connect.php";
            if ($username == "" || $password == "") {
                echo "<script>alert('Tên đăng nhập hoặc mật khẩu bạn không được để trống!')</script>";
            } else {
-               $sql = "select * from loptruong where username ='$username' and password ='$password' ";
+               $sql = "select id_lop,quyen,username,hoten from loptruong where username ='$username' and password ='$password' ";
                $rows = $db->query($sql);
                $rs = $rows->fetch();
                $quyen = explode(',', $rs['quyen']);
                if (!empty($rs)) {
                    $_SESSION['login_us'] = 'ok';
                    $_SESSION['username'] = $username;
+                   $_SESSION['loptruong'] = $rs;
                    $_SESSION['quyen'] = $quyen;
                    header('Location: index.php');
                  } else {

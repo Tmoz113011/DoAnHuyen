@@ -59,6 +59,10 @@ if (!isset($_SESSION['login_us'])) {
                     <?php } //giao viên
                     elseif ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('2', $_SESSION['quyen'])) {
                         ?>
+                        <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "ds_bc_lt") ? "active" : "" ?>">
+                            <a
+                                    href="index.php?page=ds_bc_lt"><i class="fa fa-list-alt"></i> Báo cáo theo ngày của lớp trưởng</a>
+                        </li>
                         <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "bcthang") ? "active" : "" ?>">
                             <a
                                     href="index.php?page=bcthang"><i class="fa fa-list-alt"></i> Báo cáo theo tháng</a>
@@ -88,6 +92,13 @@ if (!isset($_SESSION['login_us'])) {
                                     href="index.php?page=dangkysh"><i class="fa fa-list-alt"></i> Danh sách đăng kí sinh hoạt lớp</a></li>
                         <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "xlcanbo") ? "active" : "" ?>"><a
                                     href="index.php?page=xlcanbo"><i class="fa fa-list-alt"></i> Xếp loại cán bộ lớp</a></li>
+                        <?php
+                    }
+                    elseif ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('4', $_SESSION['quyen'])) {
+                        ?>
+                        <li class="<?php echo (isset($_GET['page']) && $_GET['page'] == "bcLT") ? "active" : "" ?>"><a
+                                    href="index.php?page=bcLT"><i class="fa fa-list-alt"></i> Báo cáo hàng ngày</a></li>
+                        
                         <?php
                     }
                 }
