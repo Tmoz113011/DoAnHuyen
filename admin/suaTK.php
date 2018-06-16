@@ -88,7 +88,7 @@
             <div class="col-sm-8">
                 <?php if (isset($_GET['section']) && $_GET['section'] == 'password' && isset($_GET['view'])) { ?>
                     <p>Bạn nên sử dụng mật khẩu mạnh mà mình chưa sử dụng ở đâu khác</p>
-                    <form action="/saveAccounts" method="post">
+                    <form action="" method="post">
                         <?php if (isset($_GET['error'])) { ?>
                             <div class="alert alert-danger mt-2" role="alert">
                                 Mật khẩu bạn nhập không chính xác vui lòng nhập lại!!
@@ -118,7 +118,7 @@
                 <?php } ?>
             </div>
             <div class="col-sm-2 pull-right">
-                <a href="/accounts?section=password&view">Chỉnh sửa</a>
+                <a href="index.php?page=suaTK?section=password&view">Chỉnh sửa</a>
             </div>
         </div>
         <hr>
