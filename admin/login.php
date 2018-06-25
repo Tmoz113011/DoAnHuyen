@@ -1,13 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Quản lý giáo viên - Đăng nhập</title>
-
+    <title>Admin</title>
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
 
@@ -16,116 +12,99 @@
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
     <!-- Page Specific CSS -->
     <link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 <?php
 session_start();
 include "connect.php";
- if (empty($_SESSION['login_us'])) {
-     if ($_SERVER["REQUEST_METHOD"] == 'POST') {
-       if ($_POST['loai'] == 1) {
-             $username = $_POST["user"];
-             $password = $_POST["pass"];
-             $username = strip_tags($username);
-             $username = addslashes($username);
-             $password = strip_tags($password);
-             $password = md5(addslashes($password));
-             if ($username == "" || $password == "") {
-                 echo "<script>alert('Tên đăng nhập hoặc mật khẩu bạn không được để trống!')</script>";
-             } else {
-                 $sql = "select * from users where username ='$username' and password ='$password' ";
-                 $rows = $db->query($sql);
-                 $rs = $rows->fetch();
-                 $quyen = explode(',', $rs['quyen']);
-                 if (!empty($rs)) {
-                     $_SESSION['login_us'] = 'ok';
-                     $_SESSION['username'] = $username;
-                     $_SESSION['quyen'] = $quyen;
-                     header('Location: index.php');
-               } else {
-                   echo "<script>alert('Tên đăng nhập hoặc mật khẩu không đúng !')</script>";
-               }
-           }
-       }
-        elseif ($_POST['loai'] == 2) {
-           $username = $_POST["user"];
-           $password = $_POST["pass"];
-           $username = strip_tags($username);
-           $username = addslashes($username);
-           $password = strip_tags($password);
-           $password = md5(addslashes($password));
-           if ($username == "" || $password == "") {
-               echo "<script>alert('Tên đăng nhập hoặc mật khẩu bạn không được để trống!')</script>";
-           } else {
-               $sql = "select * from giangvien where username ='$username' and password ='$password' ";
-               $rows = $db->query($sql);
-               $rs = $rows->fetch();
-               $quyen = explode(',', $rs['quyen']);
-               if (!empty($rs)) {
-                     $sqlLop = "select * from lop where id_giaovien=" . $rs['id'];
-                     $rowsLop = $db->query($sqlLop);
-                     $rsLop = $rowsLop->fetch();
-                     $_SESSION['lop'] = $rsLop;
-                   $_SESSION['login_us'] = 'ok';
-                   $_SESSION['username'] = $username;
-                   $_SESSION['quyen'] = $quyen;
-                   header('Location: index.php');
-               } else {
-                   echo "<script>alert('Tên đăng nhập hoặc mật khẩu không đúng !')</script>";
-               }
-           }
-       }
-        elseif ($_POST['loai'] == 3) {
-           $username = $_POST["user"];
-           $password = $_POST["pass"];
-           $username = strip_tags($username);
-           $username = addslashes($username);
-           $password = strip_tags($password);
-           $password = md5(addslashes($password));
-           if ($username == "" || $password == "") {
-               echo "<script>alert('Tên đăng nhập hoặc mật khẩu bạn không được để trống!')</script>";
-           } else {
-               $sql = "select * from thanhtra where username ='$username' and password ='$password' ";
-               $rows = $db->query($sql);
-               $rs = $rows->fetch();
-               $quyen = explode(',', $rs['quyen']);
-               if (!empty($rs)) {
-                   $_SESSION['login_us'] = 'ok';
-                   $_SESSION['username'] = $username;
-                   $_SESSION['quyen'] = $quyen;
-                   header('Location: index.php');
-                 } else {
-                     echo "<script>alert('Tên đăng nhập hoặc mật khẩu không đúng !')</script>";
-                 }
-             }
-       }
-       elseif ($_POST['loai'] == 4) {
-           $username = $_POST["user"];
-           $password = $_POST["pass"];
-           $username = strip_tags($username);
-           $username = addslashes($username);
-           $password = strip_tags($password);
-           $password = md5(addslashes($password));
-           if ($username == "" || $password == "") {
-               echo "<script>alert('Tên đăng nhập hoặc mật khẩu bạn không được để trống!')</script>";
-           } else {
-               $sql = "select id_lop,quyen,username,hoten from loptruong where username ='$username' and password ='$password' ";
-               $rows = $db->query($sql);
-               $rs = $rows->fetch();
-               $quyen = explode(',', $rs['quyen']);
-               if (!empty($rs)) {
-                   $_SESSION['login_us'] = 'ok';
-                   $_SESSION['username'] = $username;
-                   $_SESSION['loptruong'] = $rs;
-                   $_SESSION['quyen'] = $quyen;
-                   header('Location: index.php');
-                 } else {
-                     echo "<script>alert('Tên đăng nhập hoặc mật khẩu không đúng !')</script>";
-                 }
-             }
-       }
+if (empty($_SESSION['login_us'])) {
+    if ($_SERVER["REQUEST_METHOD"] == 'POST') {
+        if ($_POST['loai'] == 1) {
+            $username = $_POST["user"];
+            $password = $_POST["pass"];
+            $username = strip_tags($username);
+            $username = addslashes($username);
+            $password = strip_tags($password);
+            $password = md5(addslashes($password));
+            if ($username == "" || $password == "") {
+                echo "<script>alert('Tên đăng nhập hoặc mật khẩu bạn không được để trống!')</script>";
+            } else {
+                $sql = "select * from users where username ='$username' and password ='$password' ";
+                $rows = $db->query($sql);
+                $rs = $rows->fetch();
+                $quyen = explode(',', $rs['quyen']);
+                if (!empty($rs)) {
+                    $_SESSION['login_us'] = 'ok';
+                    $_SESSION['username'] = $username;
+                    $_SESSION['quyen'] = $quyen;
+                    if (!empty($_SESSION['login_us'])) {
+                        header('Location: index.php');
+                    }
+                } else {
+                    echo "<script>alert('Tên đăng nhập hoặc mật khẩu không đúng !')</script>";
+                }
+            }
+        } elseif ($_POST['loai'] == 2) {
+            $username = $_POST["user"];
+            $password = $_POST["pass"];
+            $username = strip_tags($username);
+            $username = addslashes($username);
+            $password = strip_tags($password);
+            $password = md5(addslashes($password));
+            if ($username == "" || $password == "") {
+                echo "<script>alert('Tên đăng nhập hoặc mật khẩu bạn không được để trống!')</script>";
+            } else {
+                $sql = "select * from users where username ='$username' and password ='$password' ";
+                $rows = $db->query($sql);
+                $rs = $rows->fetch();
+                $quyen = explode(',', $rs['quyen']);
+                if (!empty($rs)) {
+                    $sqlLop = "select * from lop where id_giaovien=" . $rs['id'];
+                    $rowsLop = $db->query($sqlLop);
+                    $rsLop = $rowsLop->fetch();
+                    $_SESSION['lop'] = $rsLop;
+                    $_SESSION['login_us'] = 'ok';
+                    $_SESSION['username'] = $username;
+                    $_SESSION['quyen'] = $quyen;
+                    if (!empty($_SESSION['login_us'])) {
+                        header('Location: index.php');
+                    }
+                } else {
+                    echo "<script>alert('Tên đăng nhập hoặc mật khẩu không đúng !')</script>";
+                }
+            }
+        } else {
+            $username = $_POST["user"];
+            $password = $_POST["pass"];
+            $username = strip_tags($username);
+            $username = addslashes($username);
+            $password = strip_tags($password);
+            $password = md5(addslashes($password));
+            if ($username == "" || $password == "") {
+                echo "<script>alert('Tên đăng nhập hoặc mật khẩu bạn không được để trống!')</script>";
+            } else {
+                $sql = "select * from thanhtra where username ='$username' and password ='$password' ";
+                $rows = $db->query($sql);
+                $rs = $rows->fetch();
+                $quyen = explode(',', $rs['quyen']);
+                if (!empty($rs)) {
+                    $_SESSION['login_us'] = 'ok';
+                    $_SESSION['username'] = $username;
+                    $_SESSION['quyen'] = $quyen;
+                    if (!empty($_SESSION['login_us'])) {
+                        header('Location: index.php');
+                    }
+                } else {
+                    echo "<script>alert('Tên đăng nhập hoặc mật khẩu không đúng !')</script>";
+                }
+            }
+        }
     }
- } else {
+} else {
     header("location:index.php");
 }
 
@@ -155,7 +134,6 @@ include "connect.php";
             <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
         </form><!-- /form -->
     </div><!-- /card-container -->
-</div><!-- /container -->
-
+</div>
 </body>
 </html>

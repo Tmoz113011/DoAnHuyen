@@ -11,33 +11,35 @@ ob_start();
 
     <title>Quản lý giáo viên - Admin</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Add custom CSS here -->
-    <link href="css/css/style.css" rel="stylesheet">
-    <link href="css/sb-admin.css" rel="stylesheet">
-    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
-    <!-- Page Specific CSS -->
-    <link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css">
-    <style>
-        .mt-2 {
-            margin-top: 2rem;
-        }
-    </style>
+    <link href="fonts/css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+
+    <!-- Custom styling plus plugins -->
+    <link href="css/custom.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/maps/jquery-jvectormap-2.0.3.css"/>
+    <link href="css/icheck/flat/green.css" rel="stylesheet">
+    <link href="css/floatexamples.css" rel="stylesheet"/>
+
+    <script src="js/jquery.min.js"></script>
+
 </head>
 <body>
-<?php
-include __DIR__ . '/header.php';
-?>
-<div class="container-fluid">
-    <div class="row">
-        <div>
-            <?php
-            include __DIR__ . "/connect.php";
-            ?>
-        </div>
-        <div class="col-md-12">
+
+
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+        <?php
+        include __DIR__ . '/header.php';
+
+        ?>
+        <?php
+        include __DIR__ . "/connect.php";
+        ?>
+        <div class="right_col" role="main">
+            <br/>
             <?php
             //admin
             if ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('1', $_SESSION['quyen'])) {
@@ -146,9 +148,7 @@ include __DIR__ . '/header.php';
                         default:
                             include "home.php";
                             break;
-
                     }
-
                 } else include "home.php";
             } //giao viên
             elseif ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('2', $_SESSION['quyen'])) {
@@ -212,9 +212,7 @@ include __DIR__ . '/header.php';
                         default:
                             include "home.php";
                             break;
-
                     }
-
                 } else include "home.php";
             } //thanhtra
             elseif ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('3', $_SESSION['quyen'])) {
@@ -266,16 +264,13 @@ include __DIR__ . '/header.php';
                         default:
                             include "home.php";
                             break;
-
                     }
-
                 } else include "home.php";
-            }
-            elseif ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('4', $_SESSION['quyen'])) {
+            } elseif ($_SESSION['login_us'] == 'ok' && !empty($_SESSION['quyen']) && in_array('4', $_SESSION['quyen'])) {
                 if (isset($_REQUEST['page'])) {
                     $page = $_REQUEST['page'];
                     switch ($page) {
-                        
+
                         case 'bcLT';
                             include "bcLT.php";
                             break;
@@ -285,21 +280,26 @@ include __DIR__ . '/header.php';
                         default:
                             include "home.php";
                             break;
-
                     }
-
                 } else include "home.php";
             }
             ?>
-
-
         </div>
+        <!-- /page content -->
     </div>
-    <!--/.container-->
 </div>
-</div>
+<footer>
+    <div class="copyright-info">
+        <p class=" text-center">Hệ thống quản lý công tác giáo viên chủ nhiệm UTT</a>
+        </p>
+    </div>
+    <div class="clearfix"></div>
+</footer>
 
-<!--/.wrapper-->
+<script src="js/bootstrap.min.js"></script>
+<script src="js/nicescroll/jquery.nicescroll.min.js"></script>
+<script src="js/custom.js"></script
+        <!--/.wrapper-->
 
 <script src="../admin/css/ckeditor/ckeditor.js" type="text/javascript"></script>
 </body>
